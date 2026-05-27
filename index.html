@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수능특강 EBS-18 | 에듀케레 영수학원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Noto Sans KR', sans-serif;
+  background:#f5f5f0;
+  color:#222;
+  line-height:1.7;
+  min-height:100vh;
+}
+.sidebar {
+  position:fixed; left:0; top:0;
+  width:280px; height:100vh;
+  background:#1a2744;
+  color:#fff;
+  padding:30px 22px;
+  overflow-y:auto;
+  z-index:100;
+  box-shadow:2px 0 20px rgba(0,0,0,0.15);
+}
+.sidebar h1 {
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  color:#c8a84b;
+  margin-bottom:6px;
+  letter-spacing:0.5px;
+  font-weight:900;
+}
+.sidebar .academy {
+  font-size:13px;
+  color:#e8e2cf;
+  margin-bottom:24px;
+  letter-spacing:0.3px;
+  border-bottom:1px solid rgba(200,168,75,0.3);
+  padding-bottom:14px;
+}
+.sidebar .series-title {
+  font-size:11px;
+  color:#9ba8c5;
+  margin-bottom:14px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+.passage-list { list-style:none; }
+.passage-list li {
+  padding:12px 14px;
+  margin-bottom:6px;
+  background:rgba(255,255,255,0.04);
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.2s;
+  border-left:3px solid transparent;
+  font-size:14px;
+}
+.passage-list li:hover {
+  background:rgba(200,168,75,0.15);
+  border-left-color:#c8a84b;
+}
+.passage-list li.active {
+  background:rgba(200,168,75,0.22);
+  border-left-color:#c8a84b;
+  color:#fff;
+  font-weight:500;
+}
+.passage-list li .num {
+  font-family:'EB Garamond', serif;
+  font-size:16px;
+  font-weight:600;
+  color:#c8a84b;
+  margin-right:8px;
+}
+.passage-list li .ttl { font-size:13px; }
+.sidebar-footer {
+  margin-top:30px;
+  padding-top:18px;
+  border-top:1px solid rgba(200,168,75,0.25);
+  font-size:11px;
+  color:#9ba8c5;
+  line-height:1.6;
+}
+.main { margin-left:280px; padding:40px 60px; max-width:1100px; }
+.cover {
+  text-align:center;
+  padding:80px 40px 60px;
+  background:linear-gradient(135deg,#1a2744 0%,#2a3a5c 100%);
+  color:#fff;
+  border-radius:14px;
+  margin-bottom:30px;
+  box-shadow:0 10px 40px rgba(26,39,68,0.2);
+}
+.cover .academy-name {
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  color:#c8a84b;
+  letter-spacing:3px;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.cover .academy-ko {
+  font-size:15px;
+  color:#e8e2cf;
+  margin-bottom:40px;
+  letter-spacing:2px;
+}
+.cover h2 {
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  margin-bottom:14px;
+  color:#fff;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.cover .subtitle {
+  font-size:18px;
+  color:#c8a84b;
+  margin-bottom:30px;
+  letter-spacing:1px;
+}
+.cover .desc {
+  font-size:14px;
+  color:#d4dae8;
+  max-width:520px;
+  margin:0 auto;
+  line-height:1.8;
+}
+.tabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  background:#fff;
+  padding:8px;
+  border-radius:10px;
+  margin-bottom:24px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.tab {
+  padding:10px 16px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:13px;
+  color:#666;
+  border-radius:6px;
+  font-weight:500;
+  transition:all 0.18s;
+  letter-spacing:0.2px;
+}
+.tab:hover { background:#f5f0e0; color:#1a2744; }
+.tab.active {
+  background:#1a2744;
+  color:#c8a84b;
+  font-weight:700;
+}
+.tab-content { display:none; animation:fadeIn 0.3s; }
+.tab-content.active { display:block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+.passage-block { display:none; }
+.passage-block.active { display:block; }
+.card {
+  background:#fff;
+  padding:36px 40px;
+  border-radius:10px;
+  box-shadow:0 2px 14px rgba(0,0,0,0.06);
+  margin-bottom:20px;
+}
+.card h3 {
+  font-family:'Playfair Display', serif;
+  color:#1a2744;
+  font-size:24px;
+  margin-bottom:8px;
+  border-bottom:3px solid #c8a84b;
+  padding-bottom:10px;
+  display:inline-block;
+}
+.card .sub {
+  font-size:13px;
+  color:#888;
+  margin-bottom:20px;
+  margin-top:6px;
+}
+.full-text {
+  font-family:'EB Garamond', serif;
+  font-size:17px;
+  line-height:1.9;
+  color:#222;
+  text-align:justify;
+  padding:24px 28px;
+  background:#fafaf3;
+  border-left:4px solid #c8a84b;
+  border-radius:6px;
+  margin-top:14px;
+}
+.full-text-box {
+  font-family:'EB Garamond', serif;
+  font-size:17px;
+  line-height:1.9;
+  color:#222;
+  text-align:justify;
+  padding:22px 26px;
+  background:#fff;
+  border:2px solid #1a2744;
+  border-radius:6px;
+  margin-bottom:30px;
+}
+.sentence-block {
+  margin-bottom:26px;
+  padding-bottom:24px;
+  border-bottom:1px dashed #ddd;
+}
+.sentence-block:last-child { border-bottom:none; }
+.sent-num {
+  display:inline-block;
+  font-family:'EB Garamond', serif;
+  font-size:20px;
+  color:#c8a84b;
+  font-weight:700;
+  margin-right:6px;
+}
+.eng-box {
+  font-family:'EB Garamond', serif;
+  font-size:16px;
+  line-height:1.7;
+  padding:14px 18px;
+  background:#fff;
+  border:1px solid #ccc;
+  border-left:4px solid #2e75b6;
+  border-radius:4px;
+  margin:8px 0 12px;
+}
+.slash {
+  font-size:14px;
+  color:#444;
+  background:#fafaf3;
+  padding:10px 14px;
+  border-radius:4px;
+  margin-bottom:6px;
+  line-height:1.8;
+}
+.literal {
+  font-size:14px;
+  color:#1a2744;
+  padding:6px 14px;
+  margin-bottom:10px;
+}
+.literal::before { content:"→ "; color:#c8a84b; font-weight:bold; }
+.grammar-list { padding-left:6px; }
+.grammar-item {
+  font-size:13px;
+  margin-bottom:6px;
+  background:#fff8dd;
+  border-left:3px solid #c8a84b;
+  padding:8px 12px;
+  border-radius:3px;
+}
+.gm-name { font-weight:700; color:#7f6000; }
+.gm-ex { color:#333; }
+.gm-pt { color:#b06000; font-style:italic; }
+.word-grid { display:grid; gap:10px; }
+.word-row {
+  display:grid;
+  grid-template-columns:160px 1fr 70px 1.4fr;
+  gap:14px;
+  padding:11px 14px;
+  background:#fafaf3;
+  border-radius:5px;
+  align-items:center;
+  font-size:14px;
+}
+.word-row:hover { background:#fff3c8; }
+.word-en {
+  font-family:'EB Garamond', serif;
+  font-weight:700;
+  color:#1a2744;
+  font-size:16px;
+}
+.word-ko { color:#333; }
+.word-pos {
+  font-style:italic;
+  color:#888;
+  font-family:'EB Garamond', serif;
+  font-size:13px;
+  text-align:center;
+}
+.word-deriv { color:#666; font-size:13px; }
+.translation {
+  font-size:15px;
+  line-height:2.0;
+  color:#222;
+  padding:20px 24px;
+  background:#fafaf3;
+  border-radius:6px;
+  text-align:justify;
+}
+.theme-box { margin-bottom:18px; }
+.theme-label {
+  display:inline-block;
+  background:#1a2744;
+  color:#c8a84b;
+  padding:5px 14px;
+  border-radius:14px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+.theme-content {
+  font-size:15px;
+  line-height:1.8;
+  color:#222;
+  padding:14px 20px;
+  background:#fafaf3;
+  border-left:4px solid #c8a84b;
+  border-radius:4px;
+}
+.structure-flow {
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.flow-step {
+  flex:1;
+  min-width:180px;
+  padding:14px 16px;
+  background:#fff;
+  border:2px solid #c8a84b;
+  border-radius:6px;
+  font-size:13px;
+  line-height:1.6;
+  position:relative;
+}
+.flow-step .step-num {
+  display:block;
+  font-family:'EB Garamond', serif;
+  font-size:13px;
+  font-weight:700;
+  color:#c8a84b;
+  margin-bottom:4px;
+  letter-spacing:1px;
+}
+.background {
+  font-size:14.5px;
+  line-height:1.9;
+  color:#222;
+  padding:20px 24px;
+  background:#fafaf3;
+  border-left:4px solid #2e75b6;
+  border-radius:6px;
+}
+.background h4 {
+  color:#1a2744;
+  font-size:16px;
+  margin-bottom:8px;
+  margin-top:14px;
+}
+.background h4:first-child { margin-top:0; }
+.background p { margin-bottom:10px; }
+.background strong { color:#7f6000; background:#fff2cc; padding:2px 5px; border-radius:3px; }
+.quiz-block {
+  margin-bottom:28px;
+  padding:22px 26px;
+  background:#fafaf3;
+  border-radius:8px;
+  border-left:4px solid #1a2744;
+}
+.quiz-q {
+  font-size:15px;
+  font-weight:700;
+  color:#1a2744;
+  margin-bottom:14px;
+  line-height:1.7;
+}
+.quiz-q .qtype {
+  display:inline-block;
+  background:#c8a84b;
+  color:#1a2744;
+  font-size:11px;
+  padding:3px 9px;
+  border-radius:10px;
+  margin-right:8px;
+  letter-spacing:0.5px;
+  font-weight:700;
+}
+.quiz-passage {
+  font-family:'EB Garamond', serif;
+  font-size:15px;
+  line-height:1.8;
+  background:#fff;
+  padding:14px 18px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  margin-bottom:14px;
+}
+.quiz-opts { list-style:none; }
+.quiz-opts li {
+  padding:10px 16px;
+  background:#fff;
+  border:1px solid #e0e0e0;
+  border-radius:5px;
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:all 0.15s;
+  font-size:14px;
+  line-height:1.6;
+}
+.quiz-opts li:hover { background:#fff8dd; border-color:#c8a84b; }
+.quiz-opts li.correct { background:#d4edda; border-color:#28a745; color:#155724; font-weight:600; }
+.quiz-opts li.wrong { background:#f8d7da; border-color:#dc3545; color:#721c24; }
+.quiz-opts li .opt-num {
+  font-family:'EB Garamond', serif;
+  font-weight:700;
+  color:#c8a84b;
+  margin-right:8px;
+}
+.quiz-fb {
+  margin-top:10px;
+  padding:10px 14px;
+  border-radius:4px;
+  font-size:13px;
+  display:none;
+}
+.quiz-fb.show { display:block; }
+.quiz-fb.ok { background:#d4edda; color:#155724; }
+.quiz-fb.ng { background:#f8d7da; color:#721c24; }
+.reset-btn {
+  margin-top:8px;
+  padding:6px 14px;
+  background:#1a2744;
+  color:#c8a84b;
+  border:none;
+  border-radius:4px;
+  font-size:12px;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+}
+.reset-btn:hover { background:#2a3a5c; }
+.essay-block {
+  margin-bottom:24px;
+  padding:22px 26px;
+  background:#fff;
+  border-radius:8px;
+  border:2px solid #c8a84b;
+}
+.essay-q {
+  font-size:15px;
+  font-weight:700;
+  color:#1a2744;
+  margin-bottom:8px;
+  line-height:1.7;
+}
+.essay-cond {
+  font-size:13px;
+  color:#7f6000;
+  background:#fff2cc;
+  padding:6px 12px;
+  border-radius:4px;
+  margin-bottom:12px;
+  display:inline-block;
+}
+.essay-area {
+  width:100%;
+  min-height:90px;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:14px;
+  line-height:1.7;
+  resize:vertical;
+  margin-bottom:10px;
+}
+.essay-area:focus { outline:none; border-color:#c8a84b; box-shadow:0 0 0 2px #fff2cc; }
+.essay-toggle {
+  padding:8px 16px;
+  background:#1a2744;
+  color:#c8a84b;
+  border:none;
+  border-radius:4px;
+  font-size:13px;
+  cursor:pointer;
+  font-family:'Noto Sans KR', sans-serif;
+  font-weight:500;
+}
+.essay-toggle:hover { background:#2a3a5c; }
+.essay-ans {
+  display:none;
+  margin-top:12px;
+  padding:14px 18px;
+  background:#e2efda;
+  border-left:4px solid #375623;
+  border-radius:4px;
+  font-size:14px;
+  line-height:1.8;
+  color:#375623;
+}
+.essay-ans.show { display:block; }
+.essay-ans strong { color:#1a2744; }
+@media (max-width:900px) {
+  .sidebar { width:240px; padding:20px 16px; }
+  .main { margin-left:240px; padding:24px; }
+  .cover h2 { font-size:32px; }
+  .word-row { grid-template-columns:1fr; gap:4px; padding:10px 14px; }
+  .word-pos { text-align:left; }
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h1>에듀케레</h1>
+  <div class="academy">에듀케레 영수학원</div>
+  <div class="series-title">수능특강 EBS-18</div>
+  <ul class="passage-list">
+    <li class="active" onclick="showPassage(1)"><span class="num">1</span><span class="ttl">Performing Arts</span></li>
+    <li onclick="showPassage(2)"><span class="num">2</span><span class="ttl">Massey Ferguson Tractor</span></li>
+    <li onclick="showPassage(3)"><span class="num">3</span><span class="ttl">Media in Crises</span></li>
+    <li onclick="showPassage(4)"><span class="num">4</span><span class="ttl">Focal Points</span></li>
+    <li onclick="showPassage(5)"><span class="num">5</span><span class="ttl">Present in Films</span></li>
+  </ul>
+  <div class="sidebar-footer">
+    경남 양산시 물금읍<br>
+    Tel. 055-363-8010<br>
+    EDUCERE English Lab
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="cover">
+  <div class="academy-name">EDUCERE</div>
+  <div class="academy-ko">에듀케레 영수학원</div>
+  <h2>EBS-18</h2>
+  <div class="subtitle">수능특강 영어 독해 분석</div>
+  <div class="desc">
+    5개 지문에 대한 문장 단위 정밀 분석과 인터랙티브 변형문제를 통해<br>
+    독해력과 사고력을 함께 훈련합니다.
+  </div>
+</div>
+
+<!-- ============ 지문 1: Performing Arts ============ -->
+<div class="passage-block active" id="p1">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(1,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(1,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(1,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(1,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(1,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(1,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(1,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p1-full">
+<div class="card">
+<h3>The Performing Arts in Modern Society</h3>
+<div class="sub">미디어 시대에 공연 예술이 가지는 위치와 매력</div>
+<div class="full-text">
+In modern societies, the performing arts form a distinct category of public entertainment in opposition to the mass distribution through the media of expertly staged performances which have been recorded and edited. By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., unfold their signs in real space and time, and engage audiences who respond cognitively and emotionally on the spot. Performers and audiences are involved in shared enjoyment. But sometimes frustration occurs within the boundaries of such ritualistic events. In industrialized and computerized cultures, the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding. However, they retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and one-time event quality they afford. In traditional and local cultures, performances still survive and provide their audiences with a unique fulfillment in smaller scale, economically sustainable institutional settings.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p1-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+In modern societies, the performing arts form a distinct category of public entertainment in opposition to the mass distribution through the media of expertly staged performances which have been recorded and edited. By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., unfold their signs in real space and time, and engage audiences who respond cognitively and emotionally on the spot. Performers and audiences are involved in shared enjoyment. But sometimes frustration occurs within the boundaries of such ritualistic events. In industrialized and computerized cultures, the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding. However, they retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and one-time event quality they afford. In traditional and local cultures, performances still survive and provide their audiences with a unique fulfillment in smaller scale, economically sustainable institutional settings.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">In modern societies, the performing arts form a distinct category of public entertainment in opposition to the mass distribution through the media of expertly staged performances which have been recorded and edited.</div>
+<div class="slash">In modern societies, / the performing arts form / a distinct category of public entertainment / in opposition to / the mass distribution / through the media / of expertly staged performances / which have been recorded and edited.</div>
+<div class="literal">현대 사회에서 / 공연 예술은 형성한다 / 대중 오락의 별개의 범주를 / ~과 대립하여 / 대량 유포 / 미디어를 통한 / 전문적으로 무대에 올려진 공연들의 / 녹화되고 편집된</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ in opposition to (~과 대립하여)</span> <span class="gm-ex">▶ in opposition to the mass distribution ~</span> <span class="gm-pt">★ "~에 반대하여, ~과 대조적으로"; opposed to / as opposed to와 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 명사구의 of 후치수식 (장거리 수식)</span> <span class="gm-ex">▶ the mass distribution ~ of expertly staged performances</span> <span class="gm-pt">★ distribution과 of 수식어 사이에 through the media가 삽입; 핵심 구조 파악 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 which + 현재완료 수동</span> <span class="gm-ex">▶ performances [which have been recorded and edited]</span> <span class="gm-pt">★ 선행사 performances(복수) → have; 수동태 두 과거분사 병렬 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ form a category (범주를 형성하다)</span> <span class="gm-ex">▶ form a distinct category of ~</span> <span class="gm-pt">★ distinct = 별개의, 뚜렷이 구별되는; constitute / make up과 동의 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., unfold their signs in real space and time, and engage audiences who respond cognitively and emotionally on the spot.</div>
+<div class="slash">By contrast, / theater, ballet, circus, concert, rodeo, storytelling, etc., / unfold their signs / in real space and time, / and engage audiences / who respond / cognitively and emotionally / on the spot.</div>
+<div class="literal">대조적으로 / 연극, 발레, 서커스, 콘서트, 로데오, 이야기 들려주기 등은 / 그들의 기호들을 펼친다 / 실제 공간과 시간 속에서 / 그리고 청중을 끌어들인다 / 반응하는 / 인지적·정서적으로 / 그 자리에서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ By contrast (대조 부사구)</span> <span class="gm-ex">▶ By contrast, theater, ballet ~</span> <span class="gm-pt">★ "대조적으로"; In contrast / On the contrary와 의미 미세차 — 어법·어휘 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 본동사 두 개 병렬 (and)</span> <span class="gm-ex">▶ [unfold their signs ~] and [engage audiences ~]</span> <span class="gm-pt">★ 복수 주어에 두 본동사가 and 병렬; 시제·형태 일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 who + 부사 두 개 병렬</span> <span class="gm-ex">▶ audiences [who respond <strong>cognitively and emotionally</strong>]</span> <span class="gm-pt">★ 선행사 audiences; 두 부사가 and로 병렬 (인지·정서 두 측면 강조) — 글 구조 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ on the spot (관용 부사구)</span> <span class="gm-ex">▶ "그 자리에서, 즉석에서"</span> <span class="gm-pt">★ immediately / right away와 동의; 본문에서는 공연의 '실시간성' 강조 — 어휘 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">Performers and audiences are involved in shared enjoyment.</div>
+<div class="slash">Performers and audiences / are involved / in shared enjoyment.</div>
+<div class="literal">공연자와 청중은 / 관여한다 / 공유된 즐거움에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ be involved in (~에 관여하다)</span> <span class="gm-ex">▶ are involved in shared enjoyment</span> <span class="gm-pt">★ 수동태 형태로 굳어진 자동사적 표현; participate in과 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 형용사 shared</span> <span class="gm-ex">▶ shared enjoyment = "공유된 즐거움"</span> <span class="gm-pt">★ share(공유하다)의 과거분사가 형용사화; mutual / common과 의미 유사 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">But sometimes frustration occurs within the boundaries of such ritualistic events.</div>
+<div class="slash">But sometimes / frustration occurs / within the boundaries / of such ritualistic events.</div>
+<div class="literal">그러나 때때로 / 좌절이 발생한다 / 경계 안에서 / 그러한 의식적 행사들의</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ occur (자동사, 발생하다)</span> <span class="gm-ex">▶ frustration occurs ~</span> <span class="gm-pt">★ 자동사로 수동태 불가 (be occurred 오류); happen / take place와 동의 — 어법 단골 함정</span></div>
+<div class="grammar-item"><span class="gm-name">◆ such + 형용사 + 명사 (어순)</span> <span class="gm-ex">▶ such ritualistic events = "그러한 의식적 행사들"</span> <span class="gm-pt">★ such + (a/an) + 형용사 + 명사; 복수·불가산명사일 때 관사 없음 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ within the boundaries of (~의 범위 안에서)</span> <span class="gm-ex">▶ within the boundaries of such ritualistic events</span> <span class="gm-pt">★ inside / in the limits of와 동의의 비유적 표현; "경계 안에서, 한계 내에서" — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">In industrialized and computerized cultures, the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding.</div>
+<div class="slash">In industrialized and computerized cultures, / the performing arts / become economically unstable / because the institutions / which sustain them / increasingly depend on / public and corporate funding.</div>
+<div class="literal">산업화되고 전산화된 문화에서는 / 공연 예술은 / 경제적으로 불안정해진다 / 왜냐하면 기관들이 / 그것들을 지탱하는 / 점점 더 의존하기 때문에 / 공적·기업적 자금에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ become + 부사 + 형용사 (2형식)</span> <span class="gm-ex">▶ become economically unstable</span> <span class="gm-pt">★ become 뒤에는 형용사 보어; 부사 economically가 형용사 unstable 수식 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 which (주격, 복수 일치)</span> <span class="gm-ex">▶ institutions [which <strong>sustain</strong> them]</span> <span class="gm-pt">★ 선행사 institutions(복수) → sustain (복수동사); 수일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ depend on (~에 의존하다)</span> <span class="gm-ex">▶ depend on public and corporate funding</span> <span class="gm-pt">★ 자동사 + 전치사 on; rely on / count on과 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 increasingly (점점 더)</span> <span class="gm-ex">▶ increasingly depend on ~</span> <span class="gm-pt">★ more and more / progressively와 동의; 변화·증감 표현 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">However, they retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and one-time event quality they afford.</div>
+<div class="slash">However, / they retain / their power of fascination / for large, / if not massive audiences, / who prize / the experiential, risk-loaded and one-time event quality / they afford.</div>
+<div class="literal">그러나 / 그것들은 보유한다 / 매혹의 힘을 / 큰 규모의 청중에게 / 비록 거대하지는 않더라도 / 그 청중은 가치 있게 여긴다 / 체험적이며, 위험을 안고 있는, 일회성 행사의 특성을 / 그것들이 제공하는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ retain + 명사 (보유하다, 유지하다)</span> <span class="gm-ex">▶ retain their power of fascination</span> <span class="gm-pt">★ keep / maintain과 동의; lose의 반의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ A, if not B (A이지만, B는 아닐지라도)</span> <span class="gm-ex">▶ large, if not massive audiences</span> <span class="gm-pt">★ "거대하다고까지는 할 수 없지만 큰" — 한정·완화 표현; 어휘 빈출 구문</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 계속적 용법 관계대명사 who</span> <span class="gm-ex">▶ ~ audiences, who prize ~</span> <span class="gm-pt">★ 콤마 + who = 추가 설명; "그리고 그 청중은 ~" — that 사용 불가 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 복합형용사 (-loaded, one-time)</span> <span class="gm-ex">▶ risk-loaded, one-time event quality</span> <span class="gm-pt">★ 명사 + 과거분사/명사 결합으로 형용사화; risk-loaded = "위험을 안고 있는" 어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 목적격 관계대명사 생략</span> <span class="gm-ex">▶ quality [(that) they afford]</span> <span class="gm-pt">★ quality 다음 목적격 that/which 생략; afford = "제공하다" — 어휘·어법 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">In traditional and local cultures, performances still survive and provide their audiences with a unique fulfillment in smaller scale, economically sustainable institutional settings.</div>
+<div class="slash">In traditional and local cultures, / performances still survive / and provide their audiences / with a unique fulfillment / in smaller scale, / economically sustainable / institutional settings.</div>
+<div class="literal">전통적이고 지역적인 문화에서는 / 공연이 여전히 살아남는다 / 그리고 청중에게 제공한다 / 독특한 충족감을 / 더 작은 규모의 / 경제적으로 지속 가능한 / 제도적 환경 속에서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 본동사 두 개 병렬 (and)</span> <span class="gm-ex">▶ [survive] and [provide ~]</span> <span class="gm-pt">★ 주어 performances에 두 동사 병렬; 형태 일치 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ provide A with B (A에게 B를 제공하다)</span> <span class="gm-ex">▶ provide their audiences with a unique fulfillment</span> <span class="gm-pt">★ provide A with B = provide B for/to A 환언; 어법 단골 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 + 형용사 합성형 (economically sustainable)</span> <span class="gm-ex">▶ economically sustainable institutional settings</span> <span class="gm-pt">★ 부사가 형용사를 수식 → 명사 수식어구; "경제적으로 지속 가능한" — 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 형용사 still + 동사 (여전히)</span> <span class="gm-ex">▶ performances still survive</span> <span class="gm-pt">★ still은 일반동사 앞·be동사 뒤 위치; yet과 의미 구분 — 어법 단골</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p1-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">performing arts</div><div class="word-ko">공연 예술</div><div class="word-pos">n.phr.</div><div class="word-deriv">perform (v.), performance (n.)</div></div>
+<div class="word-row"><div class="word-en">distinct</div><div class="word-ko">별개의, 뚜렷한</div><div class="word-pos">adj.</div><div class="word-deriv">distinction (n.), distinctly (adv.)</div></div>
+<div class="word-row"><div class="word-en">in opposition to</div><div class="word-ko">~과 대립하여</div><div class="word-pos">prep.phr.</div><div class="word-deriv">oppose (v.), opposition (n.)</div></div>
+<div class="word-row"><div class="word-en">mass distribution</div><div class="word-ko">대량 유포</div><div class="word-pos">n.phr.</div><div class="word-deriv">distribute (v.)</div></div>
+<div class="word-row"><div class="word-en">expertly</div><div class="word-ko">전문적으로</div><div class="word-pos">adv.</div><div class="word-deriv">expert (n.), expertise (n.)</div></div>
+<div class="word-row"><div class="word-en">by contrast</div><div class="word-ko">대조적으로</div><div class="word-pos">adv.phr.</div><div class="word-deriv">contrast (n./v.)</div></div>
+<div class="word-row"><div class="word-en">unfold</div><div class="word-ko">펼치다, 전개하다</div><div class="word-pos">v.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">engage</div><div class="word-ko">끌어들이다, 참여시키다</div><div class="word-pos">v.</div><div class="word-deriv">engagement (n.), engaging (adj.)</div></div>
+<div class="word-row"><div class="word-en">cognitively</div><div class="word-ko">인지적으로</div><div class="word-pos">adv.</div><div class="word-deriv">cognition (n.), cognitive (adj.)</div></div>
+<div class="word-row"><div class="word-en">on the spot</div><div class="word-ko">그 자리에서, 즉석에서</div><div class="word-pos">adv.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">frustration</div><div class="word-ko">좌절</div><div class="word-pos">n.</div><div class="word-deriv">frustrate (v.), frustrating (adj.)</div></div>
+<div class="word-row"><div class="word-en">ritualistic</div><div class="word-ko">의식적인, 의례의</div><div class="word-pos">adj.</div><div class="word-deriv">ritual (n.)</div></div>
+<div class="word-row"><div class="word-en">unstable</div><div class="word-ko">불안정한</div><div class="word-pos">adj.</div><div class="word-deriv">stable (adj.), stability (n.)</div></div>
+<div class="word-row"><div class="word-en">sustain</div><div class="word-ko">지탱하다, 유지하다</div><div class="word-pos">v.</div><div class="word-deriv">sustainable (adj.), sustenance (n.)</div></div>
+<div class="word-row"><div class="word-en">corporate funding</div><div class="word-ko">기업 자금 지원</div><div class="word-pos">n.phr.</div><div class="word-deriv">corporation (n.), fund (v.)</div></div>
+<div class="word-row"><div class="word-en">retain</div><div class="word-ko">보유하다, 유지하다</div><div class="word-pos">v.</div><div class="word-deriv">retention (n.)</div></div>
+<div class="word-row"><div class="word-en">fascination</div><div class="word-ko">매혹, 매력</div><div class="word-pos">n.</div><div class="word-deriv">fascinate (v.), fascinating (adj.)</div></div>
+<div class="word-row"><div class="word-en">prize</div><div class="word-ko">가치 있게 여기다, 소중히 하다</div><div class="word-pos">v.</div><div class="word-deriv">prized (adj.)</div></div>
+<div class="word-row"><div class="word-en">experiential</div><div class="word-ko">체험적인, 경험에 기반한</div><div class="word-pos">adj.</div><div class="word-deriv">experience (n./v.)</div></div>
+<div class="word-row"><div class="word-en">risk-loaded</div><div class="word-ko">위험을 안고 있는</div><div class="word-pos">adj.</div><div class="word-deriv">risk (n./v.)</div></div>
+<div class="word-row"><div class="word-en">afford</div><div class="word-ko">제공하다, 주다</div><div class="word-pos">v.</div><div class="word-deriv">affordable (adj.)</div></div>
+<div class="word-row"><div class="word-en">fulfillment</div><div class="word-ko">충족감, 성취</div><div class="word-pos">n.</div><div class="word-deriv">fulfill (v.)</div></div>
+<div class="word-row"><div class="word-en">sustainable</div><div class="word-ko">지속 가능한</div><div class="word-pos">adj.</div><div class="word-deriv">sustain (v.), sustainability (n.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p1-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+현대 사회에서 공연 예술은, 녹화·편집되어 미디어를 통해 대량으로 유포되는, 전문적으로 무대화된 공연들과 대비되는 별개의 대중 오락 범주를 이룬다. 그와 대조적으로, 연극·발레·서커스·콘서트·로데오·이야기 들려주기 등은 그것들이 가진 기호들을 실제 공간과 시간 속에서 펼치며, 인지적·정서적으로 즉석에서 반응하는 청중을 끌어들인다. 공연자와 청중은 공유된 즐거움에 함께 참여한다. 그러나 때로는 이러한 의식적 행사의 경계 안에서 좌절이 발생하기도 한다. 산업화되고 전산화된 문화에서는 공연 예술이 경제적으로 불안정해지는데, 이는 그것을 지탱하는 기관들이 점점 더 공적·기업적 자금 지원에 의존하기 때문이다. 그럼에도 불구하고 공연 예술은, 비록 엄청난 규모는 아니더라도 큰 규모의 청중에게 매혹의 힘을 그대로 간직하고 있는데, 그 청중은 공연이 제공하는 체험적이며 위험을 안고 있고 일회적인 사건이라는 특성을 소중히 여긴다. 전통적이고 지역적인 문화에서는, 공연이 더 작은 규모이지만 경제적으로 지속 가능한 제도적 환경 속에서 여전히 살아남아 청중에게 독특한 충족감을 제공한다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p1-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">미디어 시대 공연 예술이 지닌 고유한 특성과 매력</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">공연 예술은 녹화된 미디어 콘텐츠와 달리 실제 시·공간에서 청중과 즉각적으로 상호작용하는 일회적·체험적 사건으로서, 경제적으로 불안정해지는 산업 문화 속에서도 매력을 잃지 않으며, 전통·지역 문화에서는 지속 가능한 형태로 여전히 살아남는다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입</span>공연 예술 = 녹화·편집된 미디어 콘텐츠와 대비되는 별개 범주</div>
+<div class="flow-step"><span class="step-num">② 본질</span>실제 시·공간에서 즉각 반응 / 공연자-청중 공유 즐거움</div>
+<div class="flow-step"><span class="step-num">③ 양면성</span>때로 좌절 발생 / 산업화 사회에서 경제적 불안정</div>
+<div class="flow-step"><span class="step-num">④ 결론</span>그래도 매력 유지 — 일회성·체험성 가치 / 전통문화에선 지속 생존</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p1-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. Performing Arts vs Media Arts — Walter Benjamin의 'Aura'</h4>
+<p>독일 철학자 <strong>Walter Benjamin(발터 벤야민)</strong>은 1936년 논문 〈기술복제시대의 예술작품〉에서, 녹화·편집된 미디어 콘텐츠가 예술 작품의 <strong>"아우라(Aura)"</strong> — 즉 시간·공간적 일회성에서 비롯되는 고유한 권위와 진정성 — 을 파괴한다고 주장했다. 본문이 강조하는 "real space and time"의 즉각성, "one-time event quality"는 바로 벤야민이 말한 공연 예술 고유의 아우라 개념과 직결된다.</p>
+
+<h4>2. Liveness — 라이브성의 가치</h4>
+<p>공연학자 <strong>Philip Auslander</strong>는 저서 《Liveness》(1999)에서 미디어 시대에 <strong>"라이브성(liveness)"</strong>이 오히려 더 큰 문화 자본이 된다고 주장했다. 모든 것이 녹화·편집·복제 가능한 시대일수록 사람들은 "지금 이 순간 다시 일어날 수 없는 사건"에 더 비싼 값을 치른다는 것이다. 본문이 말하는 <strong>"experiential, risk-loaded, one-time event quality"</strong>는 이 라이브성의 세 핵심 속성을 정확히 짚어낸다.</p>
+
+<h4>3. 공연 예술의 경제적 딜레마 — Baumol's Cost Disease</h4>
+<p>경제학자 <strong>William Baumol</strong>은 1966년 <strong>"비용 질병(Baumol's Cost Disease)"</strong> 이론을 제시했다. 공장에서는 기술 발전으로 노동 생산성이 올라 임금이 올라도 가격이 유지되지만, 4중주를 연주하는 데는 250년 전과 똑같이 4명의 연주자와 30분이 필요하다는 것이다. 즉 공연 예술은 본질적으로 생산성을 높일 수 없어 경제적으로 불리해진다. 본문이 말하는 <strong>"economically unstable"</strong>의 학문적 배경이 바로 이것이며, 그래서 <strong>공공·기업 후원(public and corporate funding)</strong>에 의존하게 된다.</p>
+
+<h4>4. 의식적 사건(Ritualistic Events)으로서의 공연</h4>
+<p>인류학자 <strong>Victor Turner</strong>는 공연을 일종의 <strong>"사회적 의례(social ritual)"</strong>로 분석했다. 공연자와 청중이 같은 시·공간에 모여 일상과 분리된 특별한 "역치적 공간(liminal space)"을 형성하며, 그 안에서 공통의 정서·인식 경험을 공유한다는 것이다. 본문 ③·④번 문장의 <strong>"shared enjoyment"</strong>와 <strong>"ritualistic events"</strong> 표현은 이 인류학적 관점을 반영한다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p1-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q1-1">
+<li onclick="check(1,1,1,false)"><span class="opt-num">①</span> 디지털 기술이 공연 예술의 질적 향상에 미친 영향</li>
+<li onclick="check(1,1,2,true)"><span class="opt-num">②</span> 미디어 시대 공연 예술이 지닌 고유한 특성과 지속적 매력</li>
+<li onclick="check(1,1,3,false)"><span class="opt-num">③</span> 공연자와 청중 간 갈등을 해결하는 의사소통 전략</li>
+<li onclick="check(1,1,4,false)"><span class="opt-num">④</span> 전통 공연이 산업화 사회에서 완전히 사라진 원인</li>
+<li onclick="check(1,1,5,false)"><span class="opt-num">⑤</span> 공적 자금이 문화 예술 산업의 성장에 기여한 방식</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-1"></div>
+<button class="reset-btn" onclick="resetQuiz(1,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">However, the performing arts retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and ____________ event quality they afford.</div>
+<ul class="quiz-opts" id="q1-2">
+<li onclick="check(1,2,1,false)"><span class="opt-num">①</span> mass-produced</li>
+<li onclick="check(1,2,2,true)"><span class="opt-num">②</span> one-time</li>
+<li onclick="check(1,2,3,false)"><span class="opt-num">③</span> pre-recorded</li>
+<li onclick="check(1,2,4,false)"><span class="opt-num">④</span> commercially edited</li>
+<li onclick="check(1,2,5,false)"><span class="opt-num">⑤</span> digitally replicated</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-2"></div>
+<button class="reset-btn" onclick="resetQuiz(1,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., ①unfold their signs in real space and time, and engage audiences ②who respond cognitively and emotionally on the spot. … In industrialized and computerized cultures, the performing arts become ③economically unstable because the institutions ④which sustains them increasingly depend on public and corporate funding. However, they retain their power of fascination for large, if not massive audiences, ⑤who prize the experiential, risk-loaded and one-time event quality they afford.</div>
+<ul class="quiz-opts" id="q1-3">
+<li onclick="check(1,3,1,false)"><span class="opt-num">①</span> unfold</li>
+<li onclick="check(1,3,2,false)"><span class="opt-num">②</span> who</li>
+<li onclick="check(1,3,3,false)"><span class="opt-num">③</span> economically</li>
+<li onclick="check(1,3,4,true)"><span class="opt-num">④</span> which sustains → which sustain</li>
+<li onclick="check(1,3,5,false)"><span class="opt-num">⑤</span> who</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-3"></div>
+<button class="reset-btn" onclick="resetQuiz(1,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q1-4">
+<li onclick="check(1,4,1,false)"><span class="opt-num">①</span> 공연 예술은 녹화·편집된 미디어 공연과 대비되는 별개의 범주를 형성한다.</li>
+<li onclick="check(1,4,2,false)"><span class="opt-num">②</span> 청중은 실제 시·공간 속에서 인지·정서적으로 즉석에서 반응한다.</li>
+<li onclick="check(1,4,3,false)"><span class="opt-num">③</span> 산업화·전산화된 문화에서 공연 예술은 경제적으로 불안정해진다.</li>
+<li onclick="check(1,4,4,true)"><span class="opt-num">④</span> 미디어 시대에 들어 공연 예술은 대중적 매혹의 힘을 모두 상실했다.</li>
+<li onclick="check(1,4,5,false)"><span class="opt-num">⑤</span> 전통·지역 문화에서는 공연이 지속 가능한 형태로 여전히 살아남는다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-4"></div>
+<button class="reset-btn" onclick="resetQuiz(1,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> In modern societies, the performing arts form a distinct category of public entertainment in opposition to the mass distribution through the media of expertly staged performances which have been recorded and edited.<br><br>
+<strong>(A)</strong> In industrialized and computerized cultures, the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding.<br>
+<strong>(B)</strong> By contrast, theater, ballet, circus, concert, rodeo, storytelling, etc., unfold their signs in real space and time, and engage audiences who respond cognitively and emotionally on the spot. Performers and audiences are involved in shared enjoyment.<br>
+<strong>(C)</strong> However, they retain their power of fascination for large, if not massive audiences, who prize the experiential, risk-loaded and one-time event quality they afford. In traditional and local cultures, performances still survive and provide their audiences with a unique fulfillment.
+</div>
+<ul class="quiz-opts" id="q1-5">
+<li onclick="check(1,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(1,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(1,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(1,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(1,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q1-5"></div>
+<button class="reset-btn" onclick="resetQuiz(1,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">Unlike recorded and edited media performances, the performing arts unfold in real space and time and engage audiences who respond on the <strong>(A) __________</strong>; though economically <strong>(B) __________</strong> in industrialized cultures, they retain their fascination because of their unique, one-time event quality.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(1,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans1-1">
+<strong>(A)</strong> spot &nbsp;|&nbsp; <strong>(B)</strong> unstable<br>
+<strong>해설:</strong> 본문 ②번 문장의 "respond cognitively and emotionally on the <em>spot</em>"와 ⑤번 문장의 "the performing arts become economically <em>unstable</em>"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 산업화·전산화된 문화에서 공연 예술이 경제적으로 불안정해지는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 30 단어 내외 · "institutions"과 "funding" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(1,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans1-2">
+<strong>모범답안:</strong> In industrialized and computerized cultures, the performing arts grow economically unstable because the institutions that sustain them rely more and more on public and corporate funding rather than on self-generated revenue.<br><br>
+<strong>해설:</strong> 본문 ⑤번 문장 "the performing arts become economically unstable because the institutions which sustain them increasingly depend on public and corporate funding"의 핵심 — 자생 수익 부족 → 외부 자금 의존 → 불안정성의 인과 구조를 살린 답안.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 1 끝 ============ -->
+
+<!-- ============ 지문 2: Massey Ferguson Tractor ============ -->
+<div class="passage-block" id="p2">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(2,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(2,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(2,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(2,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(2,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(2,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(2,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p2-full">
+<div class="card">
+<h3>The Massey Ferguson 35 — Survivorship Bias</h3>
+<div class="sub">왜 오래된 트랙터는 견고해 보이는가 — 생존 편향의 함정</div>
+<div class="full-text">
+There are estimated to be more than 160,000 farms spread across Northern Ireland and the Republic of Ireland combined. On all of those farms, you will find barns, and in some of those barns, you might be fortunate enough to stumble across a classic tractor like the Massey Ferguson 35. Production of the Massey Ferguson 35 in the UK and the USA stopped in 1964. If you were to strike up a conversation with a farmer who still owns one, she might well give the chassis of her Massey Ferguson 35 an affectionate tap and nostalgically remark, 'They don't make 'em like that anymore.' The fact that the tractor has survived at least fifty-eight years seems to provide evidence of its superior build quality. But wait — how long did the other 388,381 Massey Ferguson 35 tractors produced between 1956 and 1964 last before they went for scrap? Rather than build quality, it might well be the fondness that people in Ireland have for the little red tractor (Harry Ferguson, who developed it, was born in Ireland) that has led farmers there to hold on to their Massey Fergusons and take care of them as well as they have.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p2-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+There are estimated to be more than 160,000 farms spread across Northern Ireland and the Republic of Ireland combined. On all of those farms, you will find barns, and in some of those barns, you might be fortunate enough to stumble across a classic tractor like the Massey Ferguson 35. Production of the Massey Ferguson 35 in the UK and the USA stopped in 1964. If you were to strike up a conversation with a farmer who still owns one, she might well give the chassis of her Massey Ferguson 35 an affectionate tap and nostalgically remark, 'They don't make 'em like that anymore.' The fact that the tractor has survived at least fifty-eight years seems to provide evidence of its superior build quality. But wait — how long did the other 388,381 Massey Ferguson 35 tractors produced between 1956 and 1964 last before they went for scrap? Rather than build quality, it might well be the fondness that people in Ireland have for the little red tractor (Harry Ferguson, who developed it, was born in Ireland) that has led farmers there to hold on to their Massey Fergusons and take care of them as well as they have.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">There are estimated to be more than 160,000 farms spread across Northern Ireland and the Republic of Ireland combined.</div>
+<div class="slash">There are estimated to be / more than 160,000 farms / spread across / Northern Ireland and the Republic of Ireland / combined.</div>
+<div class="literal">~인 것으로 추정된다 / 160,000개 이상의 농장이 / ~에 걸쳐 펼쳐진 / 북아일랜드와 아일랜드 공화국에 / 합쳐서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ It is estimated to be / There are estimated to be 구조</span> <span class="gm-ex">▶ There are estimated to be more than 160,000 farms ~</span> <span class="gm-pt">★ 수동태 추측 구문; "~인 것으로 추정된다"; It is estimated that ~과 환언 가능 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식 spread</span> <span class="gm-ex">▶ farms [spread across ~] = "~에 펼쳐진 농장"</span> <span class="gm-pt">★ spread는 spread-spread-spread (불변화 동사); 수동의 의미로 명사 후치수식 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 형용사 combined</span> <span class="gm-ex">▶ Northern Ireland and the Republic of Ireland combined</span> <span class="gm-pt">★ "합쳐서, 도합" — 두 명사 뒤에 후치되어 강조; in total과 동의 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">On all of those farms, you will find barns, and in some of those barns, you might be fortunate enough to stumble across a classic tractor like the Massey Ferguson 35.</div>
+<div class="slash">On all of those farms, / you will find barns, / and in some of those barns, / you might be fortunate enough / to stumble across / a classic tractor / like the Massey Ferguson 35.</div>
+<div class="literal">그 모든 농장에서 / 당신은 헛간들을 발견할 것이다 / 그리고 그 헛간 중 일부에서 / 당신은 충분히 운이 좋아서 / 우연히 마주칠 수 있다 / 고전 트랙터를 / Massey Ferguson 35 같은</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 형용사 + enough + to부정사</span> <span class="gm-ex">▶ fortunate enough to stumble across ~</span> <span class="gm-pt">★ enough가 형용사 뒤에 위치(어순 주의); "~할 만큼 충분히 ~한" — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ stumble across (관용, 우연히 마주치다)</span> <span class="gm-ex">▶ stumble across a classic tractor</span> <span class="gm-pt">★ come across / run into와 동의; "우연히 발견·마주치다" — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ might + 동사원형 (가능성·추측)</span> <span class="gm-ex">▶ you might be fortunate ~</span> <span class="gm-pt">★ may보다 약한 가능성; "~할 수도 있다" — 어휘·어법</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">Production of the Massey Ferguson 35 in the UK and the USA stopped in 1964.</div>
+<div class="slash">Production of the Massey Ferguson 35 / in the UK and the USA / stopped in 1964.</div>
+<div class="literal">Massey Ferguson 35의 생산은 / 영국과 미국에서 / 1964년에 멈추었다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 자동사 stop (멈추다)</span> <span class="gm-ex">▶ Production ~ stopped in 1964</span> <span class="gm-pt">★ stop은 자·타동사 모두 가능; 본문에서는 자동사 — 어휘·어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ in + 연도 (시점 전치사)</span> <span class="gm-ex">▶ in 1964</span> <span class="gm-pt">★ 연도·월·계절 앞에는 in; 날짜·요일 앞 on, 시각 앞 at — 어법 기초</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">If you were to strike up a conversation with a farmer who still owns one, she might well give the chassis of her Massey Ferguson 35 an affectionate tap and nostalgically remark, 'They don't make 'em like that anymore.'</div>
+<div class="slash">If you were to strike up a conversation / with a farmer / who still owns one, / she might well give / the chassis of her Massey Ferguson 35 / an affectionate tap / and nostalgically remark, / 'They don't make 'em like that anymore.'</div>
+<div class="literal">만약 당신이 대화를 시작한다면 / 농부와 / 여전히 한 대를 가지고 있는 / 그녀는 어쩌면 ~을 줄 것이다 / 그녀의 Massey Ferguson 35의 차대에 / 애정 어린 두드림을 / 그리고 향수에 잠겨 말할 것이다 / "요즘은 그런 식으로 만들지 않아."</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 가정법 미래 (If + 주어 + were to V)</span> <span class="gm-ex">▶ If you were to strike up a conversation, she might well give ~</span> <span class="gm-pt">★ 미래의 강한 가정 (~한다면); 주절은 would/might/could + 동사원형 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ strike up a conversation (관용)</span> <span class="gm-ex">▶ "대화를 시작하다"</span> <span class="gm-pt">★ start / begin a conversation과 동의; strike up = "(대화·관계를) 시작하다" — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ give + IO + DO (4형식)</span> <span class="gm-ex">▶ give the chassis ~ <strong>an affectionate tap</strong></span> <span class="gm-pt">★ 4형식 동사 give; 간접목적어(the chassis) + 직접목적어(an affectionate tap) — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ might well + 동사 (어쩌면 ~할 것이다)</span> <span class="gm-ex">▶ she might well give ~</span> <span class="gm-pt">★ "~일 가능성이 충분히 있다"; might 강조 — probably와 유사 의미</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 본동사 두 개 병렬 (and)</span> <span class="gm-ex">▶ [give ~] and [nostalgically remark, ~]</span> <span class="gm-pt">★ 주어 she에 두 본동사 병렬; might well이 둘 다에 적용 — 어법</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">The fact that the tractor has survived at least fifty-eight years seems to provide evidence of its superior build quality.</div>
+<div class="slash">The fact / that the tractor has survived / at least fifty-eight years / seems to provide evidence / of its superior build quality.</div>
+<div class="literal">사실은 / 그 트랙터가 살아남았다는 / 적어도 58년 동안 / 증거를 제공하는 것처럼 보인다 / 그것의 우수한 제작 품질에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 동격의 that절</span> <span class="gm-ex">▶ The fact [that the tractor has survived ~]</span> <span class="gm-pt">★ The fact를 부연 설명; 관계대명사 that과 구분 — 어법 핵심: 절 안 완전한 문장이면 동격</span></div>
+<div class="grammar-item"><span class="gm-name">◆ seem + to부정사 (~인 것 같다)</span> <span class="gm-ex">▶ seems to provide evidence</span> <span class="gm-pt">★ It seems that ~ 환언 가능; 주어 = The fact (단수) → seems — 수일치 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 현재완료 (계속) have/has + p.p.</span> <span class="gm-ex">▶ has survived at least fifty-eight years</span> <span class="gm-pt">★ 과거부터 현재까지 지속; 기간 표현(for/over) 또는 단순 명사구와 결합 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ provide evidence of ~ (의 증거를 제공하다)</span> <span class="gm-ex">▶ provide evidence of its superior build quality</span> <span class="gm-pt">★ evidence of / evidence for / evidence that 모두 가능 — 어휘 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">But wait — how long did the other 388,381 Massey Ferguson 35 tractors produced between 1956 and 1964 last before they went for scrap?</div>
+<div class="slash">But wait — / how long / did the other 388,381 Massey Ferguson 35 tractors / produced between 1956 and 1964 / last / before they went for scrap?</div>
+<div class="literal">하지만 잠깐 / 얼마나 오래 / 나머지 388,381대의 Massey Ferguson 35 트랙터는 / 1956년부터 1964년 사이에 생산된 / 지속됐는가 / 그것들이 폐기 처리되기 전에</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 의문문 (how long + 조동사 did + 주어 + 동사원형)</span> <span class="gm-ex">▶ how long did ~ tractors ~ last</span> <span class="gm-pt">★ how long으로 시작하는 의문문; 동사는 last (지속하다, 자동사) — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식 produced</span> <span class="gm-ex">▶ tractors [produced between 1956 and 1964] last ~</span> <span class="gm-pt">★ produced가 tractors를 수식 (수동·완료); 주어와 본동사 last 사이에 긴 수식어구 삽입 — 어법 핵심 함정</span></div>
+<div class="grammar-item"><span class="gm-name">◆ last (자동사, 지속되다)</span> <span class="gm-ex">▶ last before they went for scrap</span> <span class="gm-pt">★ "(시간) 지속되다"; 형용사 last(마지막) / 명사 last(끝)와 구분 — 어휘 다의어</span></div>
+<div class="grammar-item"><span class="gm-name">◆ go for scrap (관용, 폐기되다)</span> <span class="gm-ex">▶ before they went for scrap</span> <span class="gm-pt">★ "고철로 폐기되다, 처분되다"; be scrapped와 동의 — 어휘 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 7 -->
+<div class="sentence-block">
+<span class="sent-num">⑦</span>
+<div class="eng-box">Rather than build quality, it might well be the fondness that people in Ireland have for the little red tractor (Harry Ferguson, who developed it, was born in Ireland) that has led farmers there to hold on to their Massey Fergusons and take care of them as well as they have.</div>
+<div class="slash">Rather than build quality, / it might well be the fondness / that people in Ireland have / for the little red tractor / (Harry Ferguson, who developed it, was born in Ireland) / that has led farmers there / to hold on to their Massey Fergusons / and take care of them / as well as they have.</div>
+<div class="literal">제작 품질보다는 / 어쩌면 그 애정일 수 있다 / 아일랜드 사람들이 가지고 있는 / 그 작은 빨간 트랙터에 대해 / (그것을 개발한 Harry Ferguson은 아일랜드에서 태어났다) / 그 애정이 그곳의 농부들을 ~하게 만들어 온 것 / 그들의 Massey Ferguson을 계속 가지고 있도록 / 그리고 그것들을 돌보도록 / 그들이 해왔던 것만큼이나 잘</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ It ~ that 강조구문</span> <span class="gm-ex">▶ it might well be [the fondness ~] that has led farmers ~</span> <span class="gm-pt">★ "농부들을 ~하게 만든 것은 다름 아닌 그 애정이다"; 강조 대상은 the fondness — 어법 핵심 구문</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 목적격 관계대명사 that</span> <span class="gm-ex">▶ the fondness [that people in Ireland have for ~]</span> <span class="gm-pt">★ have의 목적어 자리에 있는 that; have A for B = "B에 대한 A를 가지다" 구조 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 계속적 용법 관계대명사 who (사람 주격)</span> <span class="gm-ex">▶ Harry Ferguson, [who developed it], was born ~</span> <span class="gm-pt">★ 콤마로 둘러싸인 삽입 — Harry Ferguson에 대한 부연 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ lead + O + to V (5형식, ~하도록 이끌다)</span> <span class="gm-ex">▶ has led farmers there [to hold on to ~] and [take care of ~]</span> <span class="gm-pt">★ to부정사 두 개가 and로 병렬 — 동일 형태 일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ hold on to (관용, 계속 가지고 있다)</span> <span class="gm-ex">▶ hold on to their Massey Fergusons</span> <span class="gm-pt">★ keep / retain과 동의; "버리지 않고 간직하다" — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ as well as they have (관용 비교)</span> <span class="gm-ex">▶ "그들이 해왔던 것만큼 잘"</span> <span class="gm-pt">★ as ~ as 동등비교; have 뒤에는 taken care of them 생략 — 어법·생략 구문</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p2-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">be estimated to V</div><div class="word-ko">~인 것으로 추정되다</div><div class="word-pos">v.phr.</div><div class="word-deriv">estimate (v./n.), estimation (n.)</div></div>
+<div class="word-row"><div class="word-en">spread across</div><div class="word-ko">~에 걸쳐 펼쳐지다</div><div class="word-pos">v.phr.</div><div class="word-deriv">spread (n.)</div></div>
+<div class="word-row"><div class="word-en">combined</div><div class="word-ko">합쳐서, 결합된</div><div class="word-pos">adj./adv.</div><div class="word-deriv">combine (v.), combination (n.)</div></div>
+<div class="word-row"><div class="word-en">barn</div><div class="word-ko">헛간, 곳간</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">stumble across</div><div class="word-ko">우연히 마주치다</div><div class="word-pos">v.phr.</div><div class="word-deriv">stumble (v.)</div></div>
+<div class="word-row"><div class="word-en">classic</div><div class="word-ko">전형적인, 고전적인</div><div class="word-pos">adj.</div><div class="word-deriv">classical (adj.), classic (n.)</div></div>
+<div class="word-row"><div class="word-en">tractor</div><div class="word-ko">트랙터, 견인차</div><div class="word-pos">n.</div><div class="word-deriv">tract (v.)</div></div>
+<div class="word-row"><div class="word-en">production</div><div class="word-ko">생산</div><div class="word-pos">n.</div><div class="word-deriv">produce (v.), product (n.)</div></div>
+<div class="word-row"><div class="word-en">strike up a conversation</div><div class="word-ko">대화를 시작하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">chassis</div><div class="word-ko">차대, 섀시</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">affectionate</div><div class="word-ko">애정 어린, 다정한</div><div class="word-pos">adj.</div><div class="word-deriv">affection (n.), affectionately (adv.)</div></div>
+<div class="word-row"><div class="word-en">nostalgically</div><div class="word-ko">향수에 잠겨</div><div class="word-pos">adv.</div><div class="word-deriv">nostalgia (n.), nostalgic (adj.)</div></div>
+<div class="word-row"><div class="word-en">remark</div><div class="word-ko">말하다, 발언하다</div><div class="word-pos">v./n.</div><div class="word-deriv">remarkable (adj.)</div></div>
+<div class="word-row"><div class="word-en">survive</div><div class="word-ko">살아남다</div><div class="word-pos">v.</div><div class="word-deriv">survival (n.), survivor (n.)</div></div>
+<div class="word-row"><div class="word-en">evidence</div><div class="word-ko">증거</div><div class="word-pos">n.</div><div class="word-deriv">evident (adj.), evidently (adv.)</div></div>
+<div class="word-row"><div class="word-en">superior</div><div class="word-ko">우수한, 더 뛰어난</div><div class="word-pos">adj.</div><div class="word-deriv">superiority (n.)</div></div>
+<div class="word-row"><div class="word-en">build quality</div><div class="word-ko">제작 품질</div><div class="word-pos">n.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">last</div><div class="word-ko">지속되다, 견디다</div><div class="word-pos">v.</div><div class="word-deriv">lasting (adj.)</div></div>
+<div class="word-row"><div class="word-en">go for scrap</div><div class="word-ko">폐기 처분되다</div><div class="word-pos">v.phr.</div><div class="word-deriv">scrap (n./v.)</div></div>
+<div class="word-row"><div class="word-en">rather than</div><div class="word-ko">~라기보다는</div><div class="word-pos">conj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">fondness</div><div class="word-ko">애정, 좋아함</div><div class="word-pos">n.</div><div class="word-deriv">fond (adj.)</div></div>
+<div class="word-row"><div class="word-en">hold on to</div><div class="word-ko">계속 가지고 있다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">take care of</div><div class="word-ko">~을 돌보다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p2-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+북아일랜드와 아일랜드 공화국을 합쳐 160,000개가 넘는 농장이 흩어져 있다고 추정된다. 그 모든 농장에는 헛간이 있고, 그 헛간 중 일부에서는 운이 좋다면 Massey Ferguson 35 같은 고전 트랙터를 우연히 마주칠 수도 있다. 영국과 미국에서 Massey Ferguson 35의 생산은 1964년에 중단되었다. 만약 당신이 아직 그 트랙터를 한 대 가지고 있는 농부와 대화를 시작한다면, 그 농부는 어쩌면 자신의 Massey Ferguson 35 차대를 애정 어린 손길로 톡톡 두드리며 향수에 젖은 어조로 "요즘은 이렇게 안 만들지" 하고 말할지도 모른다. 그 트랙터가 적어도 58년이나 살아남았다는 사실은 그 트랙터의 우수한 제작 품질을 입증하는 증거처럼 보인다. 그러나 잠깐 — 1956년에서 1964년 사이에 생산된 나머지 388,381대의 Massey Ferguson 35 트랙터들은 폐기 처분되기 전까지 과연 얼마나 오래 지속되었을까? 그 작은 빨간 트랙터가 그곳의 농부들이 자신의 Massey Ferguson을 버리지 않고 간직하며 지금처럼 잘 관리하도록 만든 것은, 어쩌면 제작 품질이라기보다는 아일랜드 사람들이 그 트랙터에 가진 애정 — Harry Ferguson은 그것을 개발한 사람이며 아일랜드에서 태어났다 — 때문일지도 모른다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p2-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">살아남은 사례만 보고 품질을 단정하는 생존 편향(survivorship bias)의 함정</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">아일랜드 농장에 남아 있는 Massey Ferguson 35 트랙터가 우수한 제작 품질의 증거처럼 보이지만, 실제로는 폐기된 388,381대를 무시한 생존 편향일 수 있으며, 살아남은 진짜 이유는 그 트랙터에 대한 아일랜드 사람들의 애정과 정성스러운 관리일 수 있다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 도입·예시</span>아일랜드 농장 헛간에서 흔히 보이는 Massey Ferguson 35</div>
+<div class="flow-step"><span class="step-num">② 통념</span>1964년 생산 중단된 트랙터 = "옛 트랙터는 정말 잘 만들었다"는 농부의 향수</div>
+<div class="flow-step"><span class="step-num">③ 반전 질문</span>그런데 폐기된 나머지 388,381대는? — 생존 편향 노출</div>
+<div class="flow-step"><span class="step-num">④ 결론·재해석</span>품질보다 "아일랜드인의 애정"이 진짜 이유 (Harry Ferguson 출신지)</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p2-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. 생존 편향 (Survivorship Bias) — 본문의 핵심 개념</h4>
+<p>본문이 다루는 핵심 개념은 통계학·심리학의 <strong>"생존 편향(survivorship bias)"</strong>이다. 살아남은 사례만 보고 모집단 전체의 특성을 잘못 추정하는 오류로, 가장 유명한 사례는 2차 세계대전 미군의 <strong>Abraham Wald</strong> 일화다. 군은 귀환한 폭격기에 총탄 자국이 많은 부위를 보강하려 했지만, Wald는 "오히려 총탄 자국이 없는 부위를 보강해야 한다 — 그 부위에 맞은 비행기는 돌아오지 못했기 때문"이라고 지적했다. 본문이 말하는 "살아남은 트랙터만 보고 품질을 평가하면 안 된다"는 논리와 정확히 동일하다.</p>
+
+<h4>2. Massey Ferguson 35와 Harry Ferguson</h4>
+<p><strong>Massey Ferguson 35</strong>는 1956년부터 1964년까지 영국·미국에서 약 38만 대가 생산된 농업용 트랙터로, 당시 혁신적인 <strong>3점 히치(three-point hitch)</strong> 시스템을 장착한 모델이다. 개발자 <strong>Harry Ferguson(1884-1960)</strong>은 본문 언급대로 <strong>북아일랜드 County Down 출신</strong>이다. 그가 발명한 3점 히치 시스템은 현재 거의 모든 트랙터의 표준이 되었으며, 이 아일랜드 출신이라는 배경이 본문 마지막 문장의 "아일랜드인의 애정" 설명을 뒷받침한다.</p>
+
+<h4>3. 'They Don't Make 'Em Like That Anymore' — 노스탤지어 편향</h4>
+<p>본문에 인용된 농부의 발언 <strong>"They don't make 'em like that anymore(요즘은 이렇게 안 만들어)"</strong>는 영미권에서 매우 흔히 들리는 표현이다. 심리학적으로는 <strong>노스탤지어 편향(rosy retrospection)</strong> — 과거를 실제보다 더 좋게 기억하는 인지 편향 — 의 전형적 사례다. 본문은 이 일상적 발언이 사실은 생존 편향과 노스탤지어 편향이 결합된 인지 오류일 수 있음을 보여준다.</p>
+
+<h4>4. Confounding Variable — 진짜 원인은 무엇인가</h4>
+<p>본문 마지막 문장은 <strong>"교란 변수(confounding variable)"</strong>의 개념을 가르친다. 두 변수 사이에 상관관계가 보일 때 실제 인과는 보이지 않는 제3의 변수일 수 있다. <strong>"오래 살아남음 ↔ 우수한 품질"</strong>로 보이는 관계 뒤에는 사실 <strong>"아일랜드인의 애정과 세심한 관리"</strong>라는 교란 변수가 작동하고 있을 수 있다는 것이다. 비판적 사고(critical thinking) 훈련의 좋은 사례다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p2-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q2-1">
+<li onclick="check(2,1,1,false)"><span class="opt-num">①</span> 아일랜드 농업의 역사와 농촌 기계화 과정</li>
+<li onclick="check(2,1,2,false)"><span class="opt-num">②</span> Massey Ferguson 35 트랙터의 기술적 우수성</li>
+<li onclick="check(2,1,3,true)"><span class="opt-num">③</span> 살아남은 사례만 보고 품질을 판단하는 생존 편향의 함정</li>
+<li onclick="check(2,1,4,false)"><span class="opt-num">④</span> Harry Ferguson의 발명가적 천재성과 그 영향</li>
+<li onclick="check(2,1,5,false)"><span class="opt-num">⑤</span> 오래된 농기계를 보존해야 하는 문화·역사적 가치</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-1"></div>
+<button class="reset-btn" onclick="resetQuiz(2,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">Rather than build quality, it might well be the ____________ that people in Ireland have for the little red tractor that has led farmers there to hold on to their Massey Fergusons and take care of them as well as they have.</div>
+<ul class="quiz-opts" id="q2-2">
+<li onclick="check(2,2,1,false)"><span class="opt-num">①</span> indifference</li>
+<li onclick="check(2,2,2,false)"><span class="opt-num">②</span> hostility</li>
+<li onclick="check(2,2,3,true)"><span class="opt-num">③</span> fondness</li>
+<li onclick="check(2,2,4,false)"><span class="opt-num">④</span> embarrassment</li>
+<li onclick="check(2,2,5,false)"><span class="opt-num">⑤</span> regret</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-2"></div>
+<button class="reset-btn" onclick="resetQuiz(2,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">If you were to strike up a conversation with a farmer ①who still owns one, she might well give the chassis of her Massey Ferguson 35 an affectionate tap and nostalgically remark, 'They don't make 'em like that anymore.' The fact ②that the tractor has survived at least fifty-eight years seems ③to provide evidence of its superior build quality. But wait — how long did the other 388,381 Massey Ferguson 35 tractors ④producing between 1956 and 1964 last before they went for scrap? Rather than build quality, it might well be the fondness ⑤that people in Ireland have for the little red tractor that has led farmers there to hold on to their Massey Fergusons.</div>
+<ul class="quiz-opts" id="q2-3">
+<li onclick="check(2,3,1,false)"><span class="opt-num">①</span> who</li>
+<li onclick="check(2,3,2,false)"><span class="opt-num">②</span> that</li>
+<li onclick="check(2,3,3,false)"><span class="opt-num">③</span> to provide</li>
+<li onclick="check(2,3,4,true)"><span class="opt-num">④</span> producing → produced</li>
+<li onclick="check(2,3,5,false)"><span class="opt-num">⑤</span> that</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-3"></div>
+<button class="reset-btn" onclick="resetQuiz(2,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q2-4">
+<li onclick="check(2,4,1,false)"><span class="opt-num">①</span> 북아일랜드와 아일랜드 공화국을 합쳐 16만 곳 이상의 농장이 있다.</li>
+<li onclick="check(2,4,2,false)"><span class="opt-num">②</span> Massey Ferguson 35는 1964년에 영국과 미국에서 생산이 중단되었다.</li>
+<li onclick="check(2,4,3,false)"><span class="opt-num">③</span> 농부들은 살아남은 트랙터의 차대를 두드리며 우수한 품질을 자랑한다.</li>
+<li onclick="check(2,4,4,true)"><span class="opt-num">④</span> 살아남은 트랙터의 사례만으로 그 모델의 품질을 충분히 입증할 수 있다.</li>
+<li onclick="check(2,4,5,false)"><span class="opt-num">⑤</span> Harry Ferguson은 그 트랙터를 개발했으며 아일랜드에서 태어났다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-4"></div>
+<button class="reset-btn" onclick="resetQuiz(2,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> There are estimated to be more than 160,000 farms spread across Northern Ireland and the Republic of Ireland combined. On all of those farms, you will find barns, and in some of those barns, you might be fortunate enough to stumble across a classic tractor like the Massey Ferguson 35.<br><br>
+<strong>(A)</strong> The fact that the tractor has survived at least fifty-eight years seems to provide evidence of its superior build quality. But wait — how long did the other 388,381 Massey Ferguson 35 tractors produced between 1956 and 1964 last before they went for scrap?<br>
+<strong>(B)</strong> Production of the Massey Ferguson 35 in the UK and the USA stopped in 1964. If you were to strike up a conversation with a farmer who still owns one, she might well give the chassis an affectionate tap and nostalgically remark, 'They don't make 'em like that anymore.'<br>
+<strong>(C)</strong> Rather than build quality, it might well be the fondness that people in Ireland have for the little red tractor that has led farmers there to hold on to their Massey Fergusons and take care of them as well as they have.
+</div>
+<ul class="quiz-opts" id="q2-5">
+<li onclick="check(2,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(2,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(2,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(2,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(2,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q2-5"></div>
+<button class="reset-btn" onclick="resetQuiz(2,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">The survival of a few Massey Ferguson 35 tractors in Irish barns seems to prove their superior build <strong>(A) __________</strong>, but it might actually be due to the <strong>(B) __________</strong> Irish people have for the little red tractor, which leads farmers to keep and care for them.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(2,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans2-1">
+<strong>(A)</strong> quality &nbsp;|&nbsp; <strong>(B)</strong> fondness<br>
+<strong>해설:</strong> 본문 ⑤번 문장의 "evidence of its superior build <em>quality</em>"와 ⑦번 문장의 "it might well be the <em>fondness</em> that people in Ireland have ~"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 살아남은 Massey Ferguson 35만으로 그 트랙터의 우수한 제작 품질을 단정할 수 없는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 35 단어 내외 · "scrap"과 "fondness" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(2,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans2-2">
+<strong>모범답안:</strong> Because we ignore the 388,381 tractors that went for scrap and remember only the surviving ones; what really matters may be the Irish farmers' fondness for the little red tractor, not its actual build quality.<br><br>
+<strong>해설:</strong> 본문 ⑥번 문장(폐기된 388,381대의 존재 = 생존 편향)과 ⑦번 문장(품질이 아닌 fondness가 진짜 원인)의 두 핵심 논리를 결합한 답안. 생존 편향의 본질을 정확히 짚어야 함.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 2 끝 ============ -->
+
+<!-- ============ 지문 3: Media in Crises ============ -->
+<div class="passage-block" id="p3">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(3,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(3,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(3,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(3,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(3,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(3,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(3,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p3-full">
+<div class="card">
+<h3>Traditional vs Social Media in Crises</h3>
+<div class="sub">위기 상황에서의 미디어 선택 — 위기 유형과 청중에 따른 차이</div>
+<div class="full-text">
+During crises that present immediate danger (e.g., natural disasters, acts of violence or terrorism, transportation crises), people seek trusted and verified sources to ease their immediate concerns, thus turning to traditional sources such as television and radio. For other crisis types, such as public health and political crises, however, people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as, unlike the first set of crises, public health and political crises may be more subjective and less straightforward, and thus necessitate a deeper dive into supplementary information and evidence. In addition to the type of crisis at hand, Liu, a communication scholar, and colleagues argued that traditional and social media have different effects on different audiences regarding the motivation to follow instructions and recommended behaviors during crises. For example, although younger audiences seem to favor social media to traditional media sources during times of crisis, older audiences indicate a preference for traditional media. Thus, both traditional and social media play a prominent role in delivering important scientific information to the public during crises.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p3-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+During crises that present immediate danger (e.g., natural disasters, acts of violence or terrorism, transportation crises), people seek trusted and verified sources to ease their immediate concerns, thus turning to traditional sources such as television and radio. For other crisis types, such as public health and political crises, however, people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as, unlike the first set of crises, public health and political crises may be more subjective and less straightforward, and thus necessitate a deeper dive into supplementary information and evidence. In addition to the type of crisis at hand, Liu, a communication scholar, and colleagues argued that traditional and social media have different effects on different audiences regarding the motivation to follow instructions and recommended behaviors during crises. For example, although younger audiences seem to favor social media to traditional media sources during times of crisis, older audiences indicate a preference for traditional media. Thus, both traditional and social media play a prominent role in delivering important scientific information to the public during crises.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">During crises that present immediate danger (e.g., natural disasters, acts of violence or terrorism, transportation crises), people seek trusted and verified sources to ease their immediate concerns, thus turning to traditional sources such as television and radio.</div>
+<div class="slash">During crises / that present immediate danger / (e.g., natural disasters, acts of violence or terrorism, transportation crises), / people seek / trusted and verified sources / to ease their immediate concerns, / thus turning to / traditional sources / such as television and radio.</div>
+<div class="literal">위기 동안에 / 즉각적인 위험을 보이는 / (예: 자연재해, 폭력이나 테러 행위, 교통 위기) / 사람들은 찾는다 / 신뢰할 수 있고 검증된 정보원을 / 자신들의 즉각적인 걱정을 덜기 위해 / 그리하여 의지한다 / 전통적 정보원에 / TV와 라디오 같은</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 복수 선행사)</span> <span class="gm-ex">▶ crises [that <strong>present</strong> immediate danger]</span> <span class="gm-pt">★ 선행사 crises(복수) → present (복수동사); 수일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 두 개 병렬 (and)</span> <span class="gm-ex">▶ [trusted] and [verified] sources</span> <span class="gm-pt">★ 두 과거분사가 and로 병렬해 sources 수식; 분사형용사의 어순·일치 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 부사적 용법 (목적)</span> <span class="gm-ex">▶ to ease their immediate concerns = "걱정을 덜기 위해"</span> <span class="gm-pt">★ in order to / so as to로 환언 가능; 목적의 to부정사 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 분사구문 (결과·연속동작)</span> <span class="gm-ex">▶ ~ , thus [turning to traditional sources ~]</span> <span class="gm-pt">★ 주절의 결과로 자연스럽게 이어지는 행동; thus가 결과를 명시; and they turn to ~로 환언 가능 — 어법 단골</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">For other crisis types, such as public health and political crises, however, people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as, unlike the first set of crises, public health and political crises may be more subjective and less straightforward, and thus necessitate a deeper dive into supplementary information and evidence.</div>
+<div class="slash">For other crisis types, / such as public health and political crises, / however, / people are more likely to turn / to social media / where they can seek / multiple voices and a variety of expert opinions, / as, / unlike the first set of crises, / public health and political crises / may be more subjective and less straightforward, / and thus necessitate / a deeper dive / into supplementary information and evidence.</div>
+<div class="literal">다른 유형의 위기에 대해서는 / 공중 보건과 정치적 위기와 같은 / 그러나 / 사람들은 더 의지하기 쉽다 / 소셜 미디어에 / 그들이 찾을 수 있는 / 다양한 목소리와 다양한 전문가 의견을 / ~이기 때문에 / 첫 번째 위기 유형과 달리 / 공중 보건과 정치적 위기는 / 더 주관적이고 덜 단순할 수 있다 / 그래서 필요로 한다 / 더 깊은 탐구를 / 보충적인 정보와 증거에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ be more likely + to부정사</span> <span class="gm-ex">▶ people are more likely to turn to ~</span> <span class="gm-pt">★ "더 ~할 가능성이 높다"; 비교급 + likely + to V 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계부사 where (장소·상황)</span> <span class="gm-ex">▶ social media [where they can seek ~]</span> <span class="gm-pt">★ 선행사 social media를 수식; in which와 환언 가능 — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ as = because (이유의 접속사)</span> <span class="gm-ex">▶ ~ , as, ~ , public health and political crises may be ~</span> <span class="gm-pt">★ as가 이유 접속사로 쓰임; "~이기 때문에" — since와 동의; 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 비교급 두 개 병렬 (more A and less B)</span> <span class="gm-ex">▶ may be [more subjective] and [less straightforward]</span> <span class="gm-pt">★ may be의 보어로 두 비교급 형용사 병렬; more와 less의 대조 구조 — 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ necessitate + 명사 (~을 필요로 하다)</span> <span class="gm-ex">▶ necessitate a deeper dive into ~</span> <span class="gm-pt">★ require / call for와 동의; necessitate + 명사/동명사 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ unlike + 명사 (전치사, ~과 달리)</span> <span class="gm-ex">▶ unlike the first set of crises</span> <span class="gm-pt">★ 전치사 unlike + 명사; 접속사 unlike (X), 부사 unlike (X) — 어법 함정 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">In addition to the type of crisis at hand, Liu, a communication scholar, and colleagues argued that traditional and social media have different effects on different audiences regarding the motivation to follow instructions and recommended behaviors during crises.</div>
+<div class="slash">In addition to / the type of crisis / at hand, / Liu, / a communication scholar, / and colleagues / argued that / traditional and social media / have different effects / on different audiences / regarding the motivation / to follow instructions / and recommended behaviors / during crises.</div>
+<div class="literal">~에 더하여 / 위기의 유형 / 당면한 / Liu와 / 한 커뮤니케이션 학자인 / 그리고 동료들은 / 주장했다 / 전통적 미디어와 소셜 미디어가 / 다른 영향을 미친다고 / 다른 청중에게 / 동기와 관련하여 / 지시를 따르려는 / 그리고 권장된 행동을 / 위기 동안</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ In addition to + 명사 (~에 더하여)</span> <span class="gm-ex">▶ In addition to the type of crisis at hand, ~</span> <span class="gm-pt">★ 전치사구로서 to 뒤 명사; 접속사 In addition은 콤마 뒤 절 — 어법 단골 함정</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 동격 콤마 (저자 부연)</span> <span class="gm-ex">▶ Liu, [a communication scholar], and colleagues argued ~</span> <span class="gm-pt">★ Liu 뒤 콤마 + 명사구가 Liu에 대한 부연 설명; 주어는 Liu and colleagues (복수) → argued — 어법 출제</span></div>
+<div class="grammar-item"><span class="gm-name">◆ at hand (관용 표현, 당면한)</span> <span class="gm-ex">▶ the type of crisis at hand = "당면한 위기의 유형"</span> <span class="gm-pt">★ "현재 다루는, 가까이 있는"; current / pending과 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ regarding (전치사, ~에 관하여)</span> <span class="gm-ex">▶ regarding the motivation to follow ~</span> <span class="gm-pt">★ concerning / about과 동의; regarding + 명사 — 어법·어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ have effects on ~ (의 영향을 미치다)</span> <span class="gm-ex">▶ have different effects on different audiences</span> <span class="gm-pt">★ have an effect on / affect와 동의; on은 영향이 미치는 대상 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">For example, although younger audiences seem to favor social media to traditional media sources during times of crisis, older audiences indicate a preference for traditional media.</div>
+<div class="slash">For example, / although younger audiences / seem to favor / social media / to traditional media sources / during times of crisis, / older audiences / indicate a preference / for traditional media.</div>
+<div class="literal">예를 들어 / 비록 더 어린 청중은 / 선호하는 것 같지만 / 소셜 미디어를 / 전통적 미디어 정보원보다 / 위기의 시간 동안에 / 더 나이 든 청중은 / 선호를 나타낸다 / 전통적 미디어에 대한</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 양보의 접속사 although (~이지만)</span> <span class="gm-ex">▶ although younger audiences seem to ~, older audiences indicate ~</span> <span class="gm-pt">★ 두 청중 그룹의 대조; though / even though와 동의 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ favor A to B (B보다 A를 더 좋아하다)</span> <span class="gm-ex">▶ favor social media to traditional media sources</span> <span class="gm-pt">★ prefer A to B와 동의 구조; favor + 명사 또는 favor A to B — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ indicate a preference for ~ (~에 대한 선호를 나타내다)</span> <span class="gm-ex">▶ indicate a preference for traditional media</span> <span class="gm-pt">★ preference 다음에는 전치사 for; show a preference for와 동의 — 어법·어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 비교급 형용사 (younger / older)</span> <span class="gm-ex">▶ younger audiences ↔ older audiences</span> <span class="gm-pt">★ 절대 비교 없이 두 그룹 비교; 본문 내 함축적 비교 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">Thus, both traditional and social media play a prominent role in delivering important scientific information to the public during crises.</div>
+<div class="slash">Thus, / both traditional and social media / play a prominent role / in delivering / important scientific information / to the public / during crises.</div>
+<div class="literal">따라서 / 전통적 미디어와 소셜 미디어 둘 다 / 중요한 역할을 한다 / 전달하는 데 있어 / 중요한 과학 정보를 / 대중에게 / 위기 동안</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ Thus (결론 부사, 따라서)</span> <span class="gm-ex">▶ Thus, both traditional and social media ~</span> <span class="gm-pt">★ Therefore / Hence / So와 동의; 글의 결론 도출 — 어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ both A and B (상관접속사, 복수 일치)</span> <span class="gm-ex">▶ both traditional and social media <strong>play</strong> ~</span> <span class="gm-pt">★ both A and B 주어 → 복수동사 play; either/neither A nor B와 일치 패턴 구분 — 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ play a role in V-ing (~하는 데 역할을 하다)</span> <span class="gm-ex">▶ play a prominent role in delivering ~</span> <span class="gm-pt">★ play a role in 뒤에는 동명사; play an important role in과 동의 — 어법·어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 형용사 prominent (두드러진, 중요한)</span> <span class="gm-ex">▶ a prominent role = "두드러진/중요한 역할"</span> <span class="gm-pt">★ significant / outstanding과 동의; 부정관사 a 잊지 말 것 — 어휘</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p3-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">crisis (pl. crises)</div><div class="word-ko">위기</div><div class="word-pos">n.</div><div class="word-deriv">critical (adj.)</div></div>
+<div class="word-row"><div class="word-en">present (a danger)</div><div class="word-ko">(위험을) 야기하다</div><div class="word-pos">v.</div><div class="word-deriv">presence (n.)</div></div>
+<div class="word-row"><div class="word-en">immediate</div><div class="word-ko">즉각적인</div><div class="word-pos">adj.</div><div class="word-deriv">immediately (adv.)</div></div>
+<div class="word-row"><div class="word-en">verified</div><div class="word-ko">검증된</div><div class="word-pos">adj.</div><div class="word-deriv">verify (v.), verification (n.)</div></div>
+<div class="word-row"><div class="word-en">source</div><div class="word-ko">출처, 정보원</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">ease</div><div class="word-ko">덜다, 완화하다</div><div class="word-pos">v.</div><div class="word-deriv">easy (adj.), easily (adv.)</div></div>
+<div class="word-row"><div class="word-en">turn to</div><div class="word-ko">~에 의지하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">be more likely to V</div><div class="word-ko">더 ~할 가능성이 있다</div><div class="word-pos">v.phr.</div><div class="word-deriv">likelihood (n.)</div></div>
+<div class="word-row"><div class="word-en">multiple voices</div><div class="word-ko">다양한 목소리</div><div class="word-pos">n.phr.</div><div class="word-deriv">multiple (adj.), multiply (v.)</div></div>
+<div class="word-row"><div class="word-en">a variety of</div><div class="word-ko">다양한</div><div class="word-pos">adj.phr.</div><div class="word-deriv">vary (v.), various (adj.)</div></div>
+<div class="word-row"><div class="word-en">subjective</div><div class="word-ko">주관적인</div><div class="word-pos">adj.</div><div class="word-deriv">subject (n.), subjectivity (n.)</div></div>
+<div class="word-row"><div class="word-en">straightforward</div><div class="word-ko">단순한, 명백한</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">necessitate</div><div class="word-ko">필요로 하다</div><div class="word-pos">v.</div><div class="word-deriv">necessity (n.), necessary (adj.)</div></div>
+<div class="word-row"><div class="word-en">supplementary</div><div class="word-ko">보충적인, 추가의</div><div class="word-pos">adj.</div><div class="word-deriv">supplement (n./v.)</div></div>
+<div class="word-row"><div class="word-en">in addition to</div><div class="word-ko">~에 더하여</div><div class="word-pos">prep.phr.</div><div class="word-deriv">addition (n.)</div></div>
+<div class="word-row"><div class="word-en">at hand</div><div class="word-ko">당면한, 가까이</div><div class="word-pos">adj.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">colleague</div><div class="word-ko">동료</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">have effects on</div><div class="word-ko">~에 영향을 미치다</div><div class="word-pos">v.phr.</div><div class="word-deriv">effect (n.), effective (adj.)</div></div>
+<div class="word-row"><div class="word-en">motivation</div><div class="word-ko">동기</div><div class="word-pos">n.</div><div class="word-deriv">motivate (v.), motive (n.)</div></div>
+<div class="word-row"><div class="word-en">favor A to B</div><div class="word-ko">B보다 A를 선호하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">favorable (adj.)</div></div>
+<div class="word-row"><div class="word-en">preference</div><div class="word-ko">선호</div><div class="word-pos">n.</div><div class="word-deriv">prefer (v.), preferable (adj.)</div></div>
+<div class="word-row"><div class="word-en">prominent</div><div class="word-ko">두드러진, 중요한</div><div class="word-pos">adj.</div><div class="word-deriv">prominence (n.)</div></div>
+<div class="word-row"><div class="word-en">deliver</div><div class="word-ko">전달하다</div><div class="word-pos">v.</div><div class="word-deriv">delivery (n.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p3-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+즉각적인 위험을 동반하는 위기(예: 자연재해, 폭력·테러 행위, 교통 위기) 동안, 사람들은 자신의 즉각적인 걱정을 덜기 위해 신뢰할 수 있고 검증된 정보원을 찾으며, 그렇게 해서 TV·라디오 같은 전통적 정보원에 의지하게 된다. 그러나 공중 보건이나 정치적 위기와 같은 다른 유형의 위기에 대해서는, 사람들이 다양한 목소리와 다양한 전문가 의견을 찾을 수 있는 소셜 미디어에 더 의지하기 쉬운데, 이는 — 첫 번째 위기 유형과 달리 — 공중 보건 위기와 정치적 위기가 더 주관적이고 덜 명확할 수 있어, 보충 정보와 증거에 대해 보다 깊이 파고들 필요가 있기 때문이다. 당면한 위기의 유형 외에도, 커뮤니케이션 학자 Liu와 동료들은 전통적 미디어와 소셜 미디어가 위기 상황에서 지시 사항과 권장 행동을 따르려는 동기와 관련해 다른 청중에게 서로 다른 영향을 미친다고 주장했다. 예를 들어 더 어린 청중은 위기 시기에 전통적 미디어보다 소셜 미디어를 선호하는 경향이 있지만, 더 나이 든 청중은 전통적 미디어에 대한 선호를 보인다. 따라서 전통적 미디어와 소셜 미디어 모두 위기 상황에서 중요한 과학적 정보를 대중에게 전달하는 데 있어 두드러진 역할을 한다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p3-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">위기 유형과 청중 연령에 따라 달라지는 전통·소셜 미디어의 역할</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">자연재해·테러처럼 즉각적 위험을 동반하는 위기에서는 사람들이 전통적 미디어에 의지하지만, 공중 보건이나 정치적 위기처럼 주관적이고 복잡한 사안에서는 소셜 미디어를 선호하며, 청중 연령에 따라서도 미디어 선호가 다르므로 결국 두 미디어 모두 위기 정보 전달에 중요한 역할을 한다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 사례 1</span>즉각 위험 위기(재해·테러) → 검증된 전통 미디어(TV·라디오)</div>
+<div class="flow-step"><span class="step-num">② 사례 2</span>보건·정치 위기(주관적·복잡) → 소셜 미디어(다양한 의견)</div>
+<div class="flow-step"><span class="step-num">③ 변인 추가</span>Liu 등 연구: 청중 차이도 영향 — 행동 동기에 작용</div>
+<div class="flow-step"><span class="step-num">④ 결론</span>젊은층 = 소셜 / 노년층 = 전통 → 두 미디어 모두 위기 정보 전달 핵심</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p3-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. Crisis Communication — 위기 커뮤니케이션 이론</h4>
+<p>본문은 미디어 학자 <strong>Brooke Fisher Liu</strong>(University of Maryland)와 동료들이 발전시킨 <strong>"Social-Mediated Crisis Communication(SMCC) 모델"</strong>의 핵심 발견을 인용한다. SMCC 모델은 위기 시 어떤 미디어가 사용되는지가 청중의 정보 처리·행동에 결정적 영향을 준다고 본다. 본문은 SMCC 연구 결과의 두 핵심 변수 — <strong>(1) 위기 유형(crisis type)</strong>과 <strong>(2) 청중 특성(audience characteristics)</strong> — 을 설명한다.</p>
+
+<h4>2. Crisis Type Classification — 위기의 두 가지 분류</h4>
+<p>본문은 위기를 두 범주로 나눈다.<br>
+• <strong>Immediate-danger crises(즉각 위험형)</strong>: 자연재해, 테러, 교통 사고. <strong>객관적·즉각적</strong>이며 "지금 무엇을 해야 하는가"가 핵심. → 검증된 정보 필요 → TV·라디오 선호.<br>
+• <strong>Long-term/abstract crises(장기·추상형)</strong>: 공중 보건, 정치. <strong>주관적·복잡</strong>하며 다양한 해석이 가능. → 다각도 의견 필요 → 소셜 미디어 선호.<br>
+COVID-19 팬데믹은 이 두 유형이 결합된 드문 사례여서 미디어 활용 패턴 연구에 풍부한 데이터를 제공했다.</p>
+
+<h4>3. 세대별 미디어 이용 격차 — Pew Research 자료</h4>
+<p>본문이 인용한 <strong>"청중 연령 차이"</strong>는 다수의 실증 연구로 뒷받침된다. 미국 Pew Research Center의 2021년 조사에 따르면, 18-29세 미국인의 71%가 소셜 미디어를 주요 뉴스 소스로 이용하는 반면, 65세 이상은 단 22%였다. 반대로 65세 이상은 78%가 TV 뉴스를 정기 시청한 반면, 18-29세는 26%에 그쳤다. 이러한 세대 격차는 위기 시 위험 인식·대응 행동의 차이로 이어진다.</p>
+
+<h4>4. Information Sufficiency — 정보 충분성 이론</h4>
+<p>심리학자 <strong>Robin Nabi</strong> 등이 발전시킨 <strong>"정보 충분성 이론(information sufficiency principle)"</strong>은 본문 ②번 문장의 논리를 설명한다. 사람들은 자신이 가진 정보가 의사 결정에 충분하지 않다고 느낄수록 더 많은 정보원을 적극적으로 찾는다는 것이다. 정치·보건처럼 <strong>"덜 명확한(less straightforward)"</strong> 사안일수록 한 정보원으로는 안심이 안 되어 소셜 미디어의 다양한 의견을 찾게 된다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p3-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q3-1">
+<li onclick="check(3,1,1,false)"><span class="opt-num">①</span> 소셜 미디어가 전통적 언론을 완전히 대체해 가는 경향</li>
+<li onclick="check(3,1,2,true)"><span class="opt-num">②</span> 위기 유형과 청중에 따라 달라지는 전통·소셜 미디어의 역할</li>
+<li onclick="check(3,1,3,false)"><span class="opt-num">③</span> 자연재해 시 정부가 따라야 할 표준 의사소통 절차</li>
+<li onclick="check(3,1,4,false)"><span class="opt-num">④</span> 가짜뉴스 확산을 막기 위한 미디어 검증 방법</li>
+<li onclick="check(3,1,5,false)"><span class="opt-num">⑤</span> 청소년의 과도한 소셜 미디어 사용이 가져오는 문제점</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-1"></div>
+<button class="reset-btn" onclick="resetQuiz(3,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">For other crisis types, such as public health and political crises, people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as these crises may be more ____________ and less straightforward, and thus necessitate a deeper dive into supplementary information and evidence.</div>
+<ul class="quiz-opts" id="q3-2">
+<li onclick="check(3,2,1,false)"><span class="opt-num">①</span> objective</li>
+<li onclick="check(3,2,2,true)"><span class="opt-num">②</span> subjective</li>
+<li onclick="check(3,2,3,false)"><span class="opt-num">③</span> immediate</li>
+<li onclick="check(3,2,4,false)"><span class="opt-num">④</span> trusted</li>
+<li onclick="check(3,2,5,false)"><span class="opt-num">⑤</span> verified</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-2"></div>
+<button class="reset-btn" onclick="resetQuiz(3,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">During crises ①that present immediate danger, people seek trusted and verified sources to ease their immediate concerns, ②thus turning to traditional sources such as television and radio. … In addition to the type of crisis at hand, Liu, a communication scholar, and colleagues argued ③that traditional and social media have different effects on different audiences regarding the motivation to follow instructions and recommended behaviors during crises. … Thus, both traditional and social media ④plays a prominent role in ⑤delivering important scientific information to the public during crises.</div>
+<ul class="quiz-opts" id="q3-3">
+<li onclick="check(3,3,1,false)"><span class="opt-num">①</span> that</li>
+<li onclick="check(3,3,2,false)"><span class="opt-num">②</span> thus turning</li>
+<li onclick="check(3,3,3,false)"><span class="opt-num">③</span> that</li>
+<li onclick="check(3,3,4,true)"><span class="opt-num">④</span> plays → play (both A and B 복수 일치)</li>
+<li onclick="check(3,3,5,false)"><span class="opt-num">⑤</span> delivering</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-3"></div>
+<button class="reset-btn" onclick="resetQuiz(3,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q3-4">
+<li onclick="check(3,4,1,false)"><span class="opt-num">①</span> 자연재해·테러 같은 즉각적 위험 위기에서는 사람들이 TV·라디오에 의지한다.</li>
+<li onclick="check(3,4,2,false)"><span class="opt-num">②</span> 공중 보건·정치 위기는 더 주관적이고 덜 명확할 수 있다.</li>
+<li onclick="check(3,4,3,true)"><span class="opt-num">③</span> 위기 시기에는 연령에 관계없이 모든 청중이 동일한 미디어를 선호한다.</li>
+<li onclick="check(3,4,4,false)"><span class="opt-num">④</span> Liu와 동료들은 위기 시 미디어가 행동 동기에 다른 영향을 미친다고 주장했다.</li>
+<li onclick="check(3,4,5,false)"><span class="opt-num">⑤</span> 전통 미디어와 소셜 미디어 모두 위기 시 과학 정보 전달에 중요한 역할을 한다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-4"></div>
+<button class="reset-btn" onclick="resetQuiz(3,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> During crises that present immediate danger (e.g., natural disasters, acts of violence or terrorism, transportation crises), people seek trusted and verified sources to ease their immediate concerns, thus turning to traditional sources such as television and radio.<br><br>
+<strong>(A)</strong> In addition to the type of crisis at hand, Liu, a communication scholar, and colleagues argued that traditional and social media have different effects on different audiences regarding the motivation to follow instructions and recommended behaviors during crises.<br>
+<strong>(B)</strong> For other crisis types, such as public health and political crises, however, people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as these crises may be more subjective and less straightforward.<br>
+<strong>(C)</strong> For example, although younger audiences seem to favor social media to traditional media sources during times of crisis, older audiences indicate a preference for traditional media. Thus, both traditional and social media play a prominent role in delivering important scientific information to the public during crises.
+</div>
+<ul class="quiz-opts" id="q3-5">
+<li onclick="check(3,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(3,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(3,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(3,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(3,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q3-5"></div>
+<button class="reset-btn" onclick="resetQuiz(3,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">During immediate-danger crises, people rely on <strong>(A) __________</strong> media such as television and radio for trusted information, while during more subjective public health or political crises, they turn to <strong>(B) __________</strong> media to access multiple expert opinions; audience age also influences media preference.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(3,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans3-1">
+<strong>(A)</strong> traditional &nbsp;|&nbsp; <strong>(B)</strong> social<br>
+<strong>해설:</strong> 본문 ①번 문장의 "turning to <em>traditional</em> sources such as television and radio"와 ②번 문장의 "people are more likely to turn to <em>social</em> media"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 공중 보건·정치적 위기에서 사람들이 소셜 미디어를 더 선호하는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 35 단어 내외 · "subjective"와 "opinions" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(3,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans3-2">
+<strong>모범답안:</strong> Because public health and political crises tend to be more subjective and less straightforward, people seek multiple voices and a variety of expert opinions on social media to dive more deeply into supplementary information and evidence.<br><br>
+<strong>해설:</strong> 본문 ②번 문장 "people are more likely to turn to social media where they can seek multiple voices and a variety of expert opinions, as ~ public health and political crises may be more subjective and less straightforward"의 핵심 인과 — 주관성·복잡성 → 다양한 의견 탐색 — 을 살린 답안.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 3 끝 ============ -->
+
+<!-- ============ 지문 4: Focal Points ============ -->
+<div class="passage-block" id="p4">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(4,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(4,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(4,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(4,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(4,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(4,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(4,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p4-full">
+<div class="card">
+<h3>Focal Points and Multiple Equilibria</h3>
+<div class="sub">작은 계기가 만드는 큰 차이 — 셸링의 초점 이론</div>
+<div class="full-text">
+Focal points are the little things that make a big difference — the difference between reaching one equilibrium and reaching another. If a local soccer team comes to practice near the playground of the park every Saturday morning or a group of stay-at-home parents arranges a regular trip at 3 P.M. on a Wednesday afternoon, that can create a focal point around which others coordinate. With the team at practice, the park will feel safe from muggers and there will be something to look at, so families will come along to use the park. Other families will come because the first families will be there; after the soccer season is over and the team no longer comes to practice, Saturday mornings can still be lively at the playground simply because everybody expects that they will be. A lively park playground can be created by a soccer practice that doesn't even take place any longer: That is an indication of how whimsically unpredictable these multiple equilibria can be. Yet while the outcome is whimsical, the causes are rational.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p4-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+Focal points are the little things that make a big difference — the difference between reaching one equilibrium and reaching another. If a local soccer team comes to practice near the playground of the park every Saturday morning or a group of stay-at-home parents arranges a regular trip at 3 P.M. on a Wednesday afternoon, that can create a focal point around which others coordinate. With the team at practice, the park will feel safe from muggers and there will be something to look at, so families will come along to use the park. Other families will come because the first families will be there; after the soccer season is over and the team no longer comes to practice, Saturday mornings can still be lively at the playground simply because everybody expects that they will be. A lively park playground can be created by a soccer practice that doesn't even take place any longer: That is an indication of how whimsically unpredictable these multiple equilibria can be. Yet while the outcome is whimsical, the causes are rational.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">Focal points are the little things that make a big difference — the difference between reaching one equilibrium and reaching another.</div>
+<div class="slash">Focal points are / the little things / that make a big difference / — the difference / between reaching one equilibrium / and reaching another.</div>
+<div class="literal">초점이란 ~이다 / 작은 것들 / 큰 차이를 만드는 / 즉, 차이 / 하나의 균형에 도달하는 것 사이의 / 그리고 다른 균형에 도달하는 것 사이의</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 복수 일치)</span> <span class="gm-ex">▶ the little things [that make a big difference]</span> <span class="gm-pt">★ 선행사 things(복수) → make (복수동사); 수일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대시(—) 동격·재진술</span> <span class="gm-ex">▶ a big difference — the difference between ~</span> <span class="gm-pt">★ 대시 뒤에 구체적 내용 부연; "즉, ~" — 글 구조 핵심 단서</span></div>
+<div class="grammar-item"><span class="gm-name">◆ between A and B (동명사구 병렬)</span> <span class="gm-ex">▶ between [reaching one equilibrium] and [reaching another]</span> <span class="gm-pt">★ between 뒤 동명사 두 개 병렬, 형태 일치 — 어법 출제</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">If a local soccer team comes to practice near the playground of the park every Saturday morning or a group of stay-at-home parents arranges a regular trip at 3 P.M. on a Wednesday afternoon, that can create a focal point around which others coordinate.</div>
+<div class="slash">If a local soccer team comes to practice / near the playground of the park / every Saturday morning / or a group of stay-at-home parents arranges / a regular trip / at 3 P.M. / on a Wednesday afternoon, / that can create / a focal point / around which others coordinate.</div>
+<div class="literal">만약 지역 축구팀이 연습하러 온다면 / 공원의 놀이터 근처에 / 매주 토요일 아침 / 또는 전업 양육 부모들의 무리가 마련한다면 / 정기적인 외출을 / 오후 3시에 / 수요일 오후에 / 그것은 만들 수 있다 / 하나의 초점을 / 다른 사람들이 그 주위로 조율되는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 직설법 조건절 (일반적 조건)</span> <span class="gm-ex">▶ If a team comes ~ or parents arranges ~, that can create ~</span> <span class="gm-pt">★ 반복적·일반적 조건은 직설법 현재; 주절 can/will + V — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 전치사 + 관계대명사 (around which)</span> <span class="gm-ex">▶ a focal point [around which others coordinate]</span> <span class="gm-pt">★ coordinate around의 전치사 around가 관계대명사 앞으로 이동; that 사용 불가 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 복합형용사 stay-at-home</span> <span class="gm-ex">▶ stay-at-home parents = "전업 양육 부모"</span> <span class="gm-pt">★ 구가 하이픈으로 결합되어 형용사화; full-time / part-time과 같은 패턴 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">With the team at practice, the park will feel safe from muggers and there will be something to look at, so families will come along to use the park.</div>
+<div class="slash">With the team at practice, / the park will feel safe / from muggers / and there will be / something to look at, / so families will come along / to use the park.</div>
+<div class="literal">팀이 연습 중인 상태에서 / 그 공원은 안전하게 느껴질 것이다 / 노상강도로부터 / 그리고 ~이 있을 것이다 / 볼 만한 무언가가 / 그래서 가족들이 함께 올 것이다 / 그 공원을 이용하러</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ With + O + 보어 (부대상황)</span> <span class="gm-ex">▶ With [the team] [at practice], ~</span> <span class="gm-pt">★ 분사구문 대신 with 구문; at practice가 보어 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ feel + 형용사 (2형식)</span> <span class="gm-ex">▶ the park will feel safe from muggers</span> <span class="gm-pt">★ feel은 감각동사로 형용사 보어 — 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ to부정사의 형용사적 용법</span> <span class="gm-ex">▶ something [to look at]</span> <span class="gm-pt">★ -thing 명사 + to부정사 후치수식; look at의 at 생략 불가 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ come along (관용, 함께 오다)</span> <span class="gm-ex">▶ families will come along to use the park</span> <span class="gm-pt">★ "동행하다, 따라오다"; 뒤 to부정사는 목적 — 어휘 빈출</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">Other families will come because the first families will be there; after the soccer season is over and the team no longer comes to practice, Saturday mornings can still be lively at the playground simply because everybody expects that they will be.</div>
+<div class="slash">Other families will come / because the first families will be there; / after the soccer season is over / and the team no longer comes to practice, / Saturday mornings can still be lively / at the playground / simply because everybody expects / that they will be.</div>
+<div class="literal">다른 가족들이 올 것이다 / 첫 가족들이 그곳에 있을 것이기 때문에 / 축구 시즌이 끝나고 / 팀이 더 이상 연습하러 오지 않게 된 후에도 / 토요일 아침은 여전히 활기찰 수 있다 / 그 놀이터에서 / 단순히 모든 사람이 기대하기 때문에 / 그것들이 그럴 것이라고</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 세미콜론(;) 두 절 연결</span> <span class="gm-ex">▶ Other families will come ~; after the season is over ~</span> <span class="gm-pt">★ 마침표보다 약하고 콤마보다 강한 연결; 의미 연속성 강조 — 문장 부호 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ no longer (더 이상 ~ 않다)</span> <span class="gm-ex">▶ the team no longer comes to practice</span> <span class="gm-pt">★ 일반동사 앞·be동사 뒤; not ~ any longer와 환언 — 어법·어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 생략 구문 (be 뒤 형용사 lively 생략)</span> <span class="gm-ex">▶ everybody expects [that they will be (lively)]</span> <span class="gm-pt">★ 반복 회피 위해 보어 lively 생략; "그럴 것이다"로 옮김 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ still (여전히, 조동사 뒤 위치)</span> <span class="gm-ex">▶ Saturday mornings can still be lively</span> <span class="gm-pt">★ still은 조동사 뒤, be동사 뒤, 일반동사 앞 위치 — 어법</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">A lively park playground can be created by a soccer practice that doesn't even take place any longer: That is an indication of how whimsically unpredictable these multiple equilibria can be.</div>
+<div class="slash">A lively park playground / can be created / by a soccer practice / that doesn't even take place / any longer: / That is an indication / of how whimsically unpredictable / these multiple equilibria can be.</div>
+<div class="literal">활기찬 공원 놀이터가 / 만들어질 수 있다 / 축구 연습에 의해 / 더 이상 일어나지 않는 / 즉 그것은 ~의 지표이다 / 얼마나 변덕스럽게 예측 불가능한지 / 이러한 다중 균형들이 ~할 수 있는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 조동사 + be + p.p. (수동태)</span> <span class="gm-ex">▶ A lively park playground can be created by ~</span> <span class="gm-pt">★ can + be + p.p. 형태; by + 행위자 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ take place (자동사구, 일어나다)</span> <span class="gm-ex">▶ a soccer practice that doesn't even take place any longer</span> <span class="gm-pt">★ happen / occur과 동의; 자동사이므로 수동태 불가 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 콜론(:) 부연·재진술</span> <span class="gm-ex">▶ ~ any longer: That is an indication of ~</span> <span class="gm-pt">★ 앞 내용의 부연·해석; "즉, 그것은 ~을 보여 준다" — 글 구조 단서</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 의문사 how + 부사 + 형용사 + 주어 + 동사</span> <span class="gm-ex">▶ how [whimsically unpredictable] [these multiple equilibria] [can be]</span> <span class="gm-pt">★ how 명사절 어순: how + 부사·형용사 + S + V — 어법 핵심</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">Yet while the outcome is whimsical, the causes are rational.</div>
+<div class="slash">Yet / while the outcome is whimsical, / the causes are rational.</div>
+<div class="literal">그렇지만 / 결과는 변덕스럽지만 / 원인은 합리적이다</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 등위접속사 yet (그러나)</span> <span class="gm-ex">▶ Yet while ~, the causes are rational.</span> <span class="gm-pt">★ but과 동의의 등위접속사; 앞 문장과 대조·반전 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 양보의 접속사 while (~이지만)</span> <span class="gm-ex">▶ while the outcome is whimsical, the causes are rational</span> <span class="gm-pt">★ "~인 반면에"; although와 동의 — 시간의 while과 의미 구분 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 대비 구조 (whimsical vs rational)</span> <span class="gm-ex">▶ outcome (변덕스러움) ↔ causes (합리적)</span> <span class="gm-pt">★ 글의 핵심 결론 — 결과는 예측 불가하나 인과 자체는 합리적 — 글 구조 파악</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p4-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">focal point</div><div class="word-ko">초점, 중심</div><div class="word-pos">n.phr.</div><div class="word-deriv">focus (n./v.), focal (adj.)</div></div>
+<div class="word-row"><div class="word-en">make a difference</div><div class="word-ko">차이를 만들다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">equilibrium</div><div class="word-ko">균형, 평형 (복수 equilibria)</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">stay-at-home</div><div class="word-ko">전업 가정형의</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">arrange</div><div class="word-ko">마련하다, 준비하다</div><div class="word-pos">v.</div><div class="word-deriv">arrangement (n.)</div></div>
+<div class="word-row"><div class="word-en">coordinate</div><div class="word-ko">조율되다, 협력하다</div><div class="word-pos">v.</div><div class="word-deriv">coordination (n.)</div></div>
+<div class="word-row"><div class="word-en">mugger</div><div class="word-ko">노상강도</div><div class="word-pos">n.</div><div class="word-deriv">mug (v.), mugging (n.)</div></div>
+<div class="word-row"><div class="word-en">come along</div><div class="word-ko">함께 오다, 따라오다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">no longer</div><div class="word-ko">더 이상 ~ 않다</div><div class="word-pos">adv.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">lively</div><div class="word-ko">활기찬</div><div class="word-pos">adj.</div><div class="word-deriv">liveliness (n.)</div></div>
+<div class="word-row"><div class="word-en">expect</div><div class="word-ko">기대하다, 예상하다</div><div class="word-pos">v.</div><div class="word-deriv">expectation (n.)</div></div>
+<div class="word-row"><div class="word-en">take place</div><div class="word-ko">일어나다, 열리다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">indication</div><div class="word-ko">지표, 표시</div><div class="word-pos">n.</div><div class="word-deriv">indicate (v.), indicator (n.)</div></div>
+<div class="word-row"><div class="word-en">whimsically</div><div class="word-ko">변덕스럽게</div><div class="word-pos">adv.</div><div class="word-deriv">whim (n.), whimsical (adj.)</div></div>
+<div class="word-row"><div class="word-en">unpredictable</div><div class="word-ko">예측할 수 없는</div><div class="word-pos">adj.</div><div class="word-deriv">predict (v.), prediction (n.)</div></div>
+<div class="word-row"><div class="word-en">multiple</div><div class="word-ko">다수의, 다중의</div><div class="word-pos">adj.</div><div class="word-deriv">multiply (v.)</div></div>
+<div class="word-row"><div class="word-en">outcome</div><div class="word-ko">결과</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">rational</div><div class="word-ko">합리적인</div><div class="word-pos">adj.</div><div class="word-deriv">rationality (n.), reason (n.)</div></div>
+<div class="word-row"><div class="word-en">cause</div><div class="word-ko">원인</div><div class="word-pos">n.</div><div class="word-deriv">causal (adj.), causation (n.)</div></div>
+<div class="word-row"><div class="word-en">playground</div><div class="word-ko">놀이터</div><div class="word-pos">n.</div><div class="word-deriv">—</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p4-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+초점(focal point)이란 큰 차이를 만들어 내는 작은 것들이다 — 즉 하나의 균형에 도달하느냐 또 다른 균형에 도달하느냐를 가르는 차이다. 만약 지역 축구팀이 매주 토요일 아침마다 공원 놀이터 근처에서 연습을 한다거나, 전업 양육 부모들의 한 무리가 수요일 오후 3시에 정기 모임을 마련한다면, 그것이 다른 사람들이 그것을 중심으로 조율할 수 있는 초점을 만들어 낼 수 있다. 팀이 연습 중일 때 그 공원은 노상강도로부터 안전하다고 느껴지고, 또 볼 만한 것이 있게 되므로, 가족들이 공원을 이용하러 함께 오게 된다. 다른 가족들도 첫 가족들이 그곳에 있을 것이기 때문에 오게 되며, 축구 시즌이 끝나고 그 팀이 더 이상 연습하러 오지 않게 된 후에도, 사람들이 모두 토요일 아침에 놀이터가 활기찰 것이라고 기대하기만 한다면 그 놀이터는 여전히 활기찰 수 있다. 더 이상 열리지 않는 축구 연습 덕분에 활기찬 공원 놀이터가 만들어지는 셈인데, 이는 이러한 다중 균형이 얼마나 변덕스러우면서도 예측 불가능할 수 있는지를 보여 주는 지표이다. 그러나 결과는 변덕스러울지언정, 그 원인들은 합리적이다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p4-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">초점(focal point)이 만드는 다중 균형의 형성과 자기 지속성</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">작은 사건(축구팀의 정기 연습 등)이 사람들이 함께 모이는 초점이 되어 활기찬 공원이라는 사회적 균형을 만들 수 있고, 원래의 계기가 사라진 뒤에도 사람들의 상호 기대만으로 그 균형은 유지될 수 있으며, 결과는 변덕스러워 보여도 그 인과 자체는 합리적이다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 정의</span>Focal point = 균형 선택을 가르는 작은 것들</div>
+<div class="flow-step"><span class="step-num">② 예시</span>축구팀 토요일 연습이나 부모 모임이 초점이 됨</div>
+<div class="flow-step"><span class="step-num">③ 확산</span>안전감·볼거리 → 다른 가족이 옴 → 또 다른 가족이 옴</div>
+<div class="flow-step"><span class="step-num">④ 자기 지속</span>원인이 사라져도 기대만으로 균형 유지 — 결과는 변덕, 인과는 합리적</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p4-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. Thomas Schelling — 초점 이론의 창시자</h4>
+<p>"Focal point" 개념은 미국 경제학자 <strong>Thomas Schelling(1921-2016, 2005년 노벨경제학상)</strong>이 1960년 저서 《The Strategy of Conflict》에서 제시한 게임이론의 핵심 개념이다. <strong>"Schelling Point(셸링의 초점)"</strong>라고도 불리며, 의사소통 없이도 사람들이 자연스럽게 수렴하는 해결책을 가리킨다. 그의 유명한 사고 실험은 "오늘 뉴욕에서 만나기로 했지만 시간·장소를 못 정했다면 어디서 만나겠는가?"였는데, 대다수가 "정오, 그랜드 센트럴 역"을 답했다 — 이것이 바로 초점이다.</p>
+
+<h4>2. Multiple Equilibria — 다중 균형</h4>
+<p>본문의 핵심 용어 <strong>"multiple equilibria(다중 균형)"</strong>는 게임이론·경제학의 중요 개념이다. 어떤 상황에 안정적 결과(=균형)가 하나가 아니라 여럿 존재할 수 있다는 뜻이다. <strong>활기찬 공원</strong>도 균형이고 <strong>텅 빈 공원</strong>도 균형이다. 어느 균형에 도달하느냐는 종종 사소한 초점에 의해 결정된다. 본문이 보여 주는 것은 이런 초점의 강력함과 비예측성이다.</p>
+
+<h4>3. Self-Fulfilling Prophecy — 자기 충족적 예언</h4>
+<p>본문 ④번 문장의 핵심 — <strong>"모두가 활기찰 것이라 기대하기 때문에 활기차다"</strong> — 는 사회학자 <strong>Robert Merton</strong>이 1948년 명명한 <strong>"자기 충족적 예언(self-fulfilling prophecy)"</strong>의 전형적 사례다. 사람들의 기대 자체가 그 기대를 현실로 만들어 낸다. 은행 사례가 대표적인데, "이 은행이 망할 것"이라는 기대가 퍼지면 모두가 예금을 찾아 실제로 은행이 망하게 된다. 본문에서는 긍정적 방향의 자기 충족적 예언이 작동한다.</p>
+
+<h4>4. Network Effects — 사회적 임계 질량</h4>
+<p>본문이 묘사하는 현상은 <strong>"네트워크 효과(network effects)"</strong>와 <strong>"임계 질량(critical mass)"</strong> 개념으로도 설명된다. 첫 가족이 와야 두 번째 가족이 오고, 두 번째 가족이 와야 세 번째 가족이 오는 식의 누적 효과다. 일정 수가 모이면(임계 질량 돌파) 더 이상 외부 원인이 없어도 시스템이 자기 지속한다. 본문의 결론 — "원인은 합리적이지만 결과는 변덕스럽다" — 은 이런 누적적·비선형적 사회 동학의 핵심 통찰이다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p4-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q4-1">
+<li onclick="check(4,1,1,false)"><span class="opt-num">①</span> 도시 공원 안전 관리에 필요한 행정적 대책</li>
+<li onclick="check(4,1,2,false)"><span class="opt-num">②</span> 지역 스포츠 활동이 가족 건강에 미치는 영향</li>
+<li onclick="check(4,1,3,true)"><span class="opt-num">③</span> 작은 초점이 다중 균형을 만들고 유지하는 방식</li>
+<li onclick="check(4,1,4,false)"><span class="opt-num">④</span> 노상강도 범죄를 줄이기 위한 시민 협력 방안</li>
+<li onclick="check(4,1,5,false)"><span class="opt-num">⑤</span> 예측 불가능한 사회 현상을 통계로 분석하는 방법</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-1"></div>
+<button class="reset-btn" onclick="resetQuiz(4,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">A lively park playground can be created by a soccer practice that doesn't even take place any longer: That is an indication of how whimsically ____________ these multiple equilibria can be. Yet while the outcome is whimsical, the causes are rational.</div>
+<ul class="quiz-opts" id="q4-2">
+<li onclick="check(4,2,1,false)"><span class="opt-num">①</span> rational</li>
+<li onclick="check(4,2,2,false)"><span class="opt-num">②</span> stable</li>
+<li onclick="check(4,2,3,true)"><span class="opt-num">③</span> unpredictable</li>
+<li onclick="check(4,2,4,false)"><span class="opt-num">④</span> identical</li>
+<li onclick="check(4,2,5,false)"><span class="opt-num">⑤</span> deliberate</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-2"></div>
+<button class="reset-btn" onclick="resetQuiz(4,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">Focal points are the little things ①that make a big difference — the difference between reaching one equilibrium and reaching another. If a local soccer team comes to practice near the playground … that can create a focal point ②around which others coordinate. With the team at practice, the park will feel ③safely from muggers and there will be something to look at, so families will come along ④to use the park. … A lively park playground can ⑤be created by a soccer practice that doesn't even take place any longer.</div>
+<ul class="quiz-opts" id="q4-3">
+<li onclick="check(4,3,1,false)"><span class="opt-num">①</span> that</li>
+<li onclick="check(4,3,2,false)"><span class="opt-num">②</span> around which</li>
+<li onclick="check(4,3,3,true)"><span class="opt-num">③</span> safely → safe (feel + 형용사)</li>
+<li onclick="check(4,3,4,false)"><span class="opt-num">④</span> to use</li>
+<li onclick="check(4,3,5,false)"><span class="opt-num">⑤</span> be created</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-3"></div>
+<button class="reset-btn" onclick="resetQuiz(4,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q4-4">
+<li onclick="check(4,4,1,false)"><span class="opt-num">①</span> 초점은 어떤 균형에 도달할지를 가르는 작은 것들이다.</li>
+<li onclick="check(4,4,2,false)"><span class="opt-num">②</span> 축구팀의 정기 연습이 가족들을 공원으로 끌어들이는 초점이 될 수 있다.</li>
+<li onclick="check(4,4,3,false)"><span class="opt-num">③</span> 축구 시즌이 끝난 후에도 사람들의 기대만으로 활기는 유지될 수 있다.</li>
+<li onclick="check(4,4,4,true)"><span class="opt-num">④</span> 다중 균형은 매우 예측 가능하며, 결과는 언제나 합리적으로 결정된다.</li>
+<li onclick="check(4,4,5,false)"><span class="opt-num">⑤</span> 결과가 변덕스러워 보여도 그 원인 자체는 합리적이다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-4"></div>
+<button class="reset-btn" onclick="resetQuiz(4,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> Focal points are the little things that make a big difference — the difference between reaching one equilibrium and reaching another.<br><br>
+<strong>(A)</strong> With the team at practice, the park will feel safe from muggers and there will be something to look at, so families will come along to use the park. Other families will come because the first families will be there.<br>
+<strong>(B)</strong> If a local soccer team comes to practice near the playground every Saturday morning or a group of stay-at-home parents arranges a regular trip at 3 P.M. on a Wednesday afternoon, that can create a focal point around which others coordinate.<br>
+<strong>(C)</strong> After the soccer season is over and the team no longer comes, Saturday mornings can still be lively at the playground simply because everybody expects that they will be. Yet while the outcome is whimsical, the causes are rational.
+</div>
+<ul class="quiz-opts" id="q4-5">
+<li onclick="check(4,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(4,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(4,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(4,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(4,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q4-5"></div>
+<button class="reset-btn" onclick="resetQuiz(4,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">Small events such as a regular soccer practice can create a <strong>(A) __________</strong> point around which people coordinate; once a lively equilibrium is reached, it can be sustained simply by expectation, showing how whimsically unpredictable these multiple <strong>(B) __________</strong> can be.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(4,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans4-1">
+<strong>(A)</strong> focal &nbsp;|&nbsp; <strong>(B)</strong> equilibria<br>
+<strong>해설:</strong> 본문 ②번 문장 "that can create a <em>focal</em> point around which others coordinate"와 ⑤번 문장 "how whimsically unpredictable these multiple <em>equilibria</em> can be"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 축구팀이 더 이상 연습하러 오지 않게 된 후에도 토요일 아침 놀이터가 여전히 활기찰 수 있는 이유를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 30 단어 내외 · "expects"와 "lively" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(4,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans4-2">
+<strong>모범답안:</strong> Because everybody expects that the playground will be lively on Saturday mornings, and these shared expectations alone are enough to sustain the equilibrium even after the original soccer practice has disappeared.<br><br>
+<strong>해설:</strong> 본문 ④번 문장 "Saturday mornings can still be lively at the playground simply because everybody expects that they will be"의 핵심 — 공유된 기대만으로 균형이 자기 지속한다는 점(자기 충족적 예언)을 명시.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 4 끝 ============ -->
+
+<!-- ============ 지문 5: Present in Films ============ -->
+<div class="passage-block" id="p5">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab(5,'full')">① 전문</button>
+  <button class="tab" onclick="showTab(5,'analysis')">② 문장분석</button>
+  <button class="tab" onclick="showTab(5,'words')">③ 핵심단어·표현</button>
+  <button class="tab" onclick="showTab(5,'trans')">④ 전문해석</button>
+  <button class="tab" onclick="showTab(5,'theme')">⑤ 주제·요지</button>
+  <button class="tab" onclick="showTab(5,'bg')">⑥ 배경지식</button>
+  <button class="tab" onclick="showTab(5,'quiz')">⑦ 변형문제</button>
+</div>
+
+<!-- ① 전문 -->
+<div class="tab-content active" id="p5-full">
+<div class="card">
+<h3>The Present Made Visible in Films</h3>
+<div class="sub">물고기에게 물이 안 보이듯 — 영화가 드러내는 시대의 무의식</div>
+<div class="full-text">
+As the set of cultural norms and categories taken for granted at any particular time, the present is normally more or less invisible to those who participate in it. It is the unthought background of their thought and action, like water to a fish, or air to a dove. In films, this background can sometimes become visible as a bygone present in a film that is not just historically but culturally dated. In the culturally dated film, attitudes and ways of behaving that have altered over time and which now appear as quaint, strange, 'incorrect' or problematic, are taken for granted by the characters in the film, and go unquestioned or are even happily endorsed in the film's narrative. The present is also visible in contemporary historical dramas that 'read the past in terms of the present', anachronistically importing modern attitudes into the past they portray. This is something that is doubly evident in dated historical films that read the past in terms of their present, where the anachronisms are themselves reflective of a bygone present.
+</div>
+</div>
+</div>
+
+<!-- ② 문장분석 -->
+<div class="tab-content" id="p5-analysis">
+<div class="card">
+<h3>Sentence Analysis</h3>
+<div class="sub">문장별 정밀 분석 · 직독직해 · 출제포인트</div>
+
+<div class="full-text-box">
+As the set of cultural norms and categories taken for granted at any particular time, the present is normally more or less invisible to those who participate in it. It is the unthought background of their thought and action, like water to a fish, or air to a dove. In films, this background can sometimes become visible as a bygone present in a film that is not just historically but culturally dated. In the culturally dated film, attitudes and ways of behaving that have altered over time and which now appear as quaint, strange, 'incorrect' or problematic, are taken for granted by the characters in the film, and go unquestioned or are even happily endorsed in the film's narrative. The present is also visible in contemporary historical dramas that 'read the past in terms of the present', anachronistically importing modern attitudes into the past they portray. This is something that is doubly evident in dated historical films that read the past in terms of their present, where the anachronisms are themselves reflective of a bygone present.
+</div>
+
+<!-- 문장 1 -->
+<div class="sentence-block">
+<span class="sent-num">①</span>
+<div class="eng-box">As the set of cultural norms and categories taken for granted at any particular time, the present is normally more or less invisible to those who participate in it.</div>
+<div class="slash">As the set of cultural norms and categories / taken for granted / at any particular time, / the present / is normally more or less invisible / to those / who participate in it.</div>
+<div class="literal">문화적 규범과 범주들의 집합으로서 / 당연하게 여겨지는 / 어떤 특정 시기에 / 현재는 / 보통 다소 보이지 않는다 / 사람들에게는 / 그 안에 참여하고 있는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 전치사 As (~로서, 자격·신분)</span> <span class="gm-ex">▶ As the set of cultural norms and categories ~</span> <span class="gm-pt">★ 자격의 As + 명사구; 양보·이유의 As와 구분 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 과거분사 후치수식 taken</span> <span class="gm-ex">▶ the set ~ [taken for granted at any particular time]</span> <span class="gm-pt">★ taken이 the set을 수식하는 과거분사; which is taken에서 which is 생략 — 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ take A for granted (관용)</span> <span class="gm-ex">▶ "A를 당연하게 여기다"</span> <span class="gm-pt">★ 본문에서는 수동형 (be taken for granted); 이 글의 핵심 관용 표현 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ those who ~ (~한 사람들)</span> <span class="gm-ex">▶ those [who participate in it]</span> <span class="gm-pt">★ those = the people; 뒤에 관계대명사 who 절 — 어법·어휘 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ more or less (다소, 어느 정도)</span> <span class="gm-ex">▶ more or less invisible</span> <span class="gm-pt">★ "거의, 어느 정도"; somewhat / roughly와 동의 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 2 -->
+<div class="sentence-block">
+<span class="sent-num">②</span>
+<div class="eng-box">It is the unthought background of their thought and action, like water to a fish, or air to a dove.</div>
+<div class="slash">It is / the unthought background / of their thought and action, / like water to a fish, / or air to a dove.</div>
+<div class="literal">그것은 ~이다 / 의식되지 않는 배경 / 그들의 사고와 행동의 / 물고기에게 물과 같은 / 또는 비둘기에게 공기와 같은</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 접두어 un- + 과거분사 (unthought)</span> <span class="gm-ex">▶ the unthought background = "의식되지 않는 배경"</span> <span class="gm-pt">★ un- + p.p. → "~되지 않는" 의미의 형용사; unspoken / unnoticed 동일 패턴 — 어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ like + 명사 (전치사, ~처럼)</span> <span class="gm-ex">▶ like water to a fish, or air to a dove</span> <span class="gm-pt">★ 전치사 like; 두 비유가 or로 병렬 — 본문의 핵심 비유 — 어법·어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 비유적 표현 (water to a fish)</span> <span class="gm-ex">▶ "물고기에게 물 = 너무 익숙해서 인식 못 함"</span> <span class="gm-pt">★ 자명하고 보편적인 환경의 비유; 본문 글의 핵심 메시지 — 글 구조 파악</span></div>
+</div>
+</div>
+
+<!-- 문장 3 -->
+<div class="sentence-block">
+<span class="sent-num">③</span>
+<div class="eng-box">In films, this background can sometimes become visible as a bygone present in a film that is not just historically but culturally dated.</div>
+<div class="slash">In films, / this background can sometimes become visible / as a bygone present / in a film / that is not just historically / but culturally dated.</div>
+<div class="literal">영화에서 / 이 배경은 때때로 가시화될 수 있다 / 지나간 현재로서 / 어떤 영화 속에서 / 단지 역사적으로뿐만 아니라 / 문화적으로도 시대에 뒤진</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ become + 형용사 (2형식)</span> <span class="gm-ex">▶ become visible</span> <span class="gm-pt">★ become 뒤 형용사 보어; 상태 변화 표현 — 어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ not just A but (also) B</span> <span class="gm-ex">▶ not just [historically] but [culturally] dated</span> <span class="gm-pt">★ not only A but also B와 동의; 두 부사가 dated를 동시 수식 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ dated (시대에 뒤진, 형용사)</span> <span class="gm-ex">▶ historically and culturally dated</span> <span class="gm-pt">★ date(시대를 표시하다)의 과거분사가 형용사화; old-fashioned와 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ bygone (지나간, 형용사)</span> <span class="gm-ex">▶ a bygone present = "지나간 현재"</span> <span class="gm-pt">★ past / former와 동의; "let bygones be bygones(지난 일은 잊자)" 관용구 어휘 — 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 4 -->
+<div class="sentence-block">
+<span class="sent-num">④</span>
+<div class="eng-box">In the culturally dated film, attitudes and ways of behaving that have altered over time and which now appear as quaint, strange, 'incorrect' or problematic, are taken for granted by the characters in the film, and go unquestioned or are even happily endorsed in the film's narrative.</div>
+<div class="slash">In the culturally dated film, / attitudes and ways of behaving / that have altered over time / and which now appear / as quaint, strange, 'incorrect' or problematic, / are taken for granted / by the characters in the film, / and go unquestioned / or are even happily endorsed / in the film's narrative.</div>
+<div class="literal">문화적으로 시대에 뒤진 영화에서는 / 태도와 행동 방식이 / 시간이 지나면서 변해 온 / 그리고 지금은 보이는 / 별나거나, 이상하거나, '잘못된' 또는 문제 있는 것으로 / 당연하게 여겨진다 / 영화 속 등장인물들에 의해 / 그리고 의문 없이 받아들여진다 / 또는 심지어 기꺼이 지지된다 / 영화의 서사 속에서</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 두 개 병렬 (that and which)</span> <span class="gm-ex">▶ attitudes and ways of behaving [that have altered ~] and [which now appear ~]</span> <span class="gm-pt">★ 두 관계대명사가 동일 선행사를 수식; that과 which 모두 사용 가능 — 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 본동사 두 개 병렬 (and)</span> <span class="gm-ex">▶ [are taken for granted] and [go unquestioned] or [are even happily endorsed]</span> <span class="gm-pt">★ 복잡한 주어에 세 본동사 병렬 (and/or로 연결); 형태·시제 일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ go + 형용사 (2형식, ~한 채로 가다)</span> <span class="gm-ex">▶ go unquestioned = "의문 제기되지 않은 채로 있다"</span> <span class="gm-pt">★ go는 2형식 동사로 형용사 보어; go unnoticed, go unanswered 동일 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ appear as + 형용사 (~로 보이다)</span> <span class="gm-ex">▶ appear as quaint, strange, 'incorrect' or problematic</span> <span class="gm-pt">★ appear as / appear + 형용사; 네 형용사 보어가 or로 병렬 — 어법·어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 5 -->
+<div class="sentence-block">
+<span class="sent-num">⑤</span>
+<div class="eng-box">The present is also visible in contemporary historical dramas that 'read the past in terms of the present', anachronistically importing modern attitudes into the past they portray.</div>
+<div class="slash">The present is also visible / in contemporary historical dramas / that 'read the past / in terms of the present', / anachronistically importing / modern attitudes / into the past / they portray.</div>
+<div class="literal">현재는 또한 가시화된다 / 현대의 역사 드라마에서 / "과거를 읽는" / 현재의 관점에서 / 시대착오적으로 들여오면서 / 현대의 태도를 / 과거 속으로 / 그들이 묘사하는</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 복수 선행사)</span> <span class="gm-ex">▶ historical dramas [that 'read the past ~']</span> <span class="gm-pt">★ 선행사 dramas(복수) → read (복수동사); 수일치 어법 — 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ in terms of (~의 관점에서)</span> <span class="gm-ex">▶ read the past in terms of the present</span> <span class="gm-pt">★ "~의 측면에서, ~의 관점에서"; from the perspective of와 동의 — 어휘 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 분사구문 (능동, 동시상황)</span> <span class="gm-ex">▶ ~ dramas that read ~ , [anachronistically importing modern attitudes ~]</span> <span class="gm-pt">★ 분사구문이 앞 절의 부연; while they anachronistically import의 분사 변환 — 어법 단골</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 목적격 관계대명사 생략</span> <span class="gm-ex">▶ the past [(that) they portray]</span> <span class="gm-pt">★ the past 다음 목적격 that/which 생략 — 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ anachronistically (시대착오적으로)</span> <span class="gm-ex">▶ anachronistically importing modern attitudes</span> <span class="gm-pt">★ anachronism(시대착오) → anachronistic → anachronistically — 본문 핵심 학술 어휘</span></div>
+</div>
+</div>
+
+<!-- 문장 6 -->
+<div class="sentence-block">
+<span class="sent-num">⑥</span>
+<div class="eng-box">This is something that is doubly evident in dated historical films that read the past in terms of their present, where the anachronisms are themselves reflective of a bygone present.</div>
+<div class="slash">This is something / that is doubly evident / in dated historical films / that read the past / in terms of their present, / where the anachronisms / are themselves reflective / of a bygone present.</div>
+<div class="literal">이것은 ~이다 / 두 배로 명백한 것 / 시대에 뒤진 역사 영화에서 / 과거를 읽는 / 그들 자신의 현재의 관점에서 / 그곳에서 시대착오들은 / 그 자체로 ~을 반영한다 / 지나간 현재를</div>
+<div class="grammar-list">
+<div class="grammar-item"><span class="gm-name">◆ 관계대명사 that (주격, 단수 일치)</span> <span class="gm-ex">▶ something [that <strong>is</strong> doubly evident]</span> <span class="gm-pt">★ 선행사 something(단수) → is — 수일치 어법 핵심</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 부사 doubly (이중으로, 두 배로)</span> <span class="gm-ex">▶ doubly evident = "두 배로 명백한"</span> <span class="gm-pt">★ double의 부사형; twice as / twofold와 의미 유사 — 어휘</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 관계부사 where (장소·상황·맥락)</span> <span class="gm-ex">▶ films ~, [where the anachronisms are ~]</span> <span class="gm-pt">★ where = in which; 추상적 상황·맥락에도 사용 — 어법 빈출</span></div>
+<div class="grammar-item"><span class="gm-name">◆ be reflective of (~을 반영하다)</span> <span class="gm-ex">▶ are themselves reflective of a bygone present</span> <span class="gm-pt">★ reflect와 동의의 형용사적 표현; themselves는 강조의 재귀대명사 — 어휘·어법</span></div>
+<div class="grammar-item"><span class="gm-name">◆ 강조의 재귀대명사 themselves</span> <span class="gm-ex">▶ the anachronisms are themselves reflective ~</span> <span class="gm-pt">★ 주어 뒤 또는 문장 끝에 위치; "그 자체가/스스로" 강조 — 어법 단골</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ③ 핵심단어·표현 -->
+<div class="tab-content" id="p5-words">
+<div class="card">
+<h3>Key Vocabulary</h3>
+<div class="sub">수능·내신 빈출 어휘 및 핵심 표현</div>
+<div class="word-grid">
+<div class="word-row"><div class="word-en">cultural norms</div><div class="word-ko">문화적 규범</div><div class="word-pos">n.phr.</div><div class="word-deriv">norm (n.), normative (adj.)</div></div>
+<div class="word-row"><div class="word-en">category</div><div class="word-ko">범주</div><div class="word-pos">n.</div><div class="word-deriv">categorize (v.), categorical (adj.)</div></div>
+<div class="word-row"><div class="word-en">take A for granted</div><div class="word-ko">A를 당연하게 여기다</div><div class="word-pos">v.phr.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">the present</div><div class="word-ko">현재 (시대)</div><div class="word-pos">n.</div><div class="word-deriv">present (adj.)</div></div>
+<div class="word-row"><div class="word-en">invisible</div><div class="word-ko">보이지 않는</div><div class="word-pos">adj.</div><div class="word-deriv">visible (adj.), invisibility (n.)</div></div>
+<div class="word-row"><div class="word-en">participate in</div><div class="word-ko">~에 참여하다</div><div class="word-pos">v.phr.</div><div class="word-deriv">participation (n.)</div></div>
+<div class="word-row"><div class="word-en">unthought</div><div class="word-ko">의식되지 않는</div><div class="word-pos">adj.</div><div class="word-deriv">thought (n.)</div></div>
+<div class="word-row"><div class="word-en">bygone</div><div class="word-ko">지나간, 과거의</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">dated</div><div class="word-ko">시대에 뒤진</div><div class="word-pos">adj.</div><div class="word-deriv">date (v./n.)</div></div>
+<div class="word-row"><div class="word-en">alter</div><div class="word-ko">변하다, 바꾸다</div><div class="word-pos">v.</div><div class="word-deriv">alteration (n.)</div></div>
+<div class="word-row"><div class="word-en">quaint</div><div class="word-ko">별난, 색다른</div><div class="word-pos">adj.</div><div class="word-deriv">—</div></div>
+<div class="word-row"><div class="word-en">problematic</div><div class="word-ko">문제가 있는</div><div class="word-pos">adj.</div><div class="word-deriv">problem (n.)</div></div>
+<div class="word-row"><div class="word-en">go unquestioned</div><div class="word-ko">의문 제기되지 않다</div><div class="word-pos">v.phr.</div><div class="word-deriv">question (v.)</div></div>
+<div class="word-row"><div class="word-en">endorse</div><div class="word-ko">지지하다, 보증하다</div><div class="word-pos">v.</div><div class="word-deriv">endorsement (n.)</div></div>
+<div class="word-row"><div class="word-en">narrative</div><div class="word-ko">서사, 이야기</div><div class="word-pos">n.</div><div class="word-deriv">narrate (v.)</div></div>
+<div class="word-row"><div class="word-en">contemporary</div><div class="word-ko">현대의, 동시대의</div><div class="word-pos">adj.</div><div class="word-deriv">contemporaneous (adj.)</div></div>
+<div class="word-row"><div class="word-en">in terms of</div><div class="word-ko">~의 관점에서</div><div class="word-pos">prep.phr.</div><div class="word-deriv">term (n.)</div></div>
+<div class="word-row"><div class="word-en">anachronistically</div><div class="word-ko">시대착오적으로</div><div class="word-pos">adv.</div><div class="word-deriv">anachronism (n.), anachronistic (adj.)</div></div>
+<div class="word-row"><div class="word-en">import A into B</div><div class="word-ko">A를 B에 들여오다</div><div class="word-pos">v.phr.</div><div class="word-deriv">import (n.)</div></div>
+<div class="word-row"><div class="word-en">portray</div><div class="word-ko">묘사하다</div><div class="word-pos">v.</div><div class="word-deriv">portrayal (n.)</div></div>
+<div class="word-row"><div class="word-en">doubly evident</div><div class="word-ko">두 배로 명백한</div><div class="word-pos">adj.phr.</div><div class="word-deriv">double (adj./v.)</div></div>
+<div class="word-row"><div class="word-en">reflective of</div><div class="word-ko">~을 반영하는</div><div class="word-pos">adj.phr.</div><div class="word-deriv">reflect (v.), reflection (n.)</div></div>
+</div>
+</div>
+</div>
+
+<!-- ④ 전문해석 -->
+<div class="tab-content" id="p5-trans">
+<div class="card">
+<h3>Translation</h3>
+<div class="sub">자연스러운 한국어 의역</div>
+<div class="translation">
+현재(the present)는 어느 특정 시기에 당연한 것으로 받아들여지는 문화적 규범과 범주들의 집합으로서, 보통 그 안에서 살아가는 사람들에게는 어느 정도 보이지 않는다. 그것은 그들의 사고와 행동의 의식되지 않는 배경으로, 마치 물고기에게 물이, 비둘기에게 공기가 그러한 것과 같다. 영화에서는 이 배경이 때때로 '지나간 현재'로서 가시화될 수 있는데, 이는 단지 역사적으로뿐만 아니라 문화적으로도 시대에 뒤진 영화에서 그러하다. 문화적으로 시대에 뒤진 영화 속에서는, 시간이 흐르며 달라져서 지금 우리 눈에는 별나거나 이상하거나 '잘못된' 또는 문제 있는 것으로 보이는 태도와 행동 방식이, 영화 속 등장인물들에 의해 당연하게 받아들여지고, 의문 제기되지 않은 채 그대로 흘러가거나 심지어 영화의 서사 속에서 기꺼이 옹호되기까지 한다. 현재는 또한 "과거를 현재의 관점에서 읽는" 현대의 역사 드라마, 즉 그들이 묘사하는 과거 속으로 현대적 태도를 시대착오적으로 끌어들이는 작품 속에서도 가시화된다. 이는 자기 시대의 관점에서 과거를 읽은 시대에 뒤진 역사 영화에서 두 배로 명백해지는데, 그 영화 속의 시대착오들 자체가 이미 '지나간 현재'를 반영하고 있기 때문이다.
+</div>
+</div>
+</div>
+
+<!-- ⑤ 주제·요지 -->
+<div class="tab-content" id="p5-theme">
+<div class="card">
+<h3>Theme &amp; Main Idea</h3>
+<div class="sub">주제 · 요지 · 글의 구조</div>
+
+<div class="theme-box">
+<div class="theme-label">TOPIC 주제</div>
+<div class="theme-content">시대에 뒤진 영화가 가시화하는 '지나간 현재(bygone present)'와 시대착오의 이중성</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">MAIN IDEA 요지</div>
+<div class="theme-content">현재의 문화 규범은 그 안에 사는 사람들에게는 마치 물고기에게 물처럼 인식되지 않지만, 시대에 뒤진 영화 속에서는 '지나간 현재'로 가시화되며, 특히 역사 드라마가 과거를 자기 시대 시각으로 시대착오적으로 묘사할 때 그 시대착오 자체가 그 영화 시대의 현재를 드러낸다.</div>
+</div>
+
+<div class="theme-box">
+<div class="theme-label">STRUCTURE 구조 흐름</div>
+<div class="structure-flow">
+<div class="flow-step"><span class="step-num">① 정의·비유</span>현재 = 당연시되는 규범 → 물고기와 물처럼 보이지 않음</div>
+<div class="flow-step"><span class="step-num">② 영화의 역할</span>시대에 뒤진 영화는 '지나간 현재'를 가시화</div>
+<div class="flow-step"><span class="step-num">③ 구체 양상</span>등장인물은 이상한 태도를 당연시·옹호 → 관객 눈에 드러남</div>
+<div class="flow-step"><span class="step-num">④ 이중 노출</span>역사 드라마의 시대착오 → 그 영화 시대의 현재까지 드러냄</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ⑥ 배경지식 -->
+<div class="tab-content" id="p5-bg">
+<div class="card">
+<h3>Background Knowledge</h3>
+<div class="sub">지문 이해를 돕는 배경 지식</div>
+<div class="background">
+<h4>1. 'Water to a Fish' — David Foster Wallace의 유명한 비유</h4>
+<p>본문의 비유 <strong>"water to a fish"</strong>는 미국 작가 <strong>David Foster Wallace</strong>가 2005년 케니언 칼리지 졸업 연설에서 사용한 유명한 비유에서 유래한다. 두 마리의 어린 물고기가 헤엄치는데 늙은 물고기가 지나가며 "물은 어때?"라고 묻자 어린 물고기는 "물이 뭔데?"라고 답한다. 너무 익숙한 환경은 오히려 보이지 않는다는 통찰로, 본문이 말하는 <strong>"현재는 그 안에 사는 자에게는 보이지 않는다"</strong>는 핵심을 정확히 포착한다.</p>
+
+<h4>2. Anachronism — 시대착오의 개념</h4>
+<p>본문의 핵심 학술 용어 <strong>"anachronism(시대착오)"</strong>은 어떤 시대에 어울리지 않는 요소가 등장하는 것을 말한다. 그리스 비극 무대에서 셰익스피어 시대 의상을 입은 배우, 중세 영화에서 캐릭터가 현대적 인권 의식을 표현하는 장면 등이 대표적이다. 본문이 지적하듯 역사 영화의 시대착오는 단순한 오류가 아니라, 영화 제작 당시의 가치관(즉, 그 영화 시대의 "현재")을 무의식적으로 반영하는 흔적이다.</p>
+
+<h4>3. 'Culturally Dated Film'의 사례</h4>
+<p><strong>"문화적으로 시대에 뒤진 영화"</strong>의 대표 사례는 1950-60년대 할리우드 영화들이다. 당시는 성역할·인종 관계가 지금과는 크게 달라, 그 시대 영화에서 자연스럽게 옹호되던 가치관이 오늘날 시청자에게는 <strong>"quaint(별난), strange(이상한), incorrect(잘못된), problematic(문제 있는)"</strong>으로 보인다. 이는 그 시대 사람들에게는 보이지 않던 "현재"가, 시간이 흐르면서 우리에게는 "지나간 현재"로 가시화되었기 때문이다.</p>
+
+<h4>4. Double Anachronism — 이중 시대착오의 통찰</h4>
+<p>본문의 마지막 문장은 학술적으로 매우 정교한 통찰을 담고 있다. 예를 들어 1960년대에 제작된 중세 역사 영화는 <strong>(1) 중세 자체를 정확히 묘사하지 못한 시대착오</strong>와 <strong>(2) 1960년대적 가치관을 무의식적으로 투영한 시대착오</strong> 두 층이 겹쳐 있다. 오늘날 그 영화를 보는 우리는 두 시대(중세 + 1960년대)의 무의식을 동시에 관찰할 수 있게 된다는 것이다. 영화학·문화연구의 핵심 분석 도구다.</p>
+</div>
+</div>
+</div>
+
+<!-- ⑦ 변형문제 -->
+<div class="tab-content" id="p5-quiz">
+<div class="card">
+<h3>Practice Questions</h3>
+<div class="sub">5지선다 인터랙티브 + 서술형 2문항 (답 직접 작성)</div>
+
+<!-- Q1 주제추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">주제추론</span>1. 윗글의 주제로 가장 적절한 것은?</div>
+<ul class="quiz-opts" id="q5-1">
+<li onclick="check(5,1,1,false)"><span class="opt-num">①</span> 영화 산업이 사회에 미치는 경제적 영향</li>
+<li onclick="check(5,1,2,false)"><span class="opt-num">②</span> 역사 영화 제작에서 고증의 중요성</li>
+<li onclick="check(5,1,3,true)"><span class="opt-num">③</span> 시대에 뒤진 영화가 가시화하는 '지나간 현재'와 시대착오</li>
+<li onclick="check(5,1,4,false)"><span class="opt-num">④</span> 문화적 규범이 형성되는 사회적 과정</li>
+<li onclick="check(5,1,5,false)"><span class="opt-num">⑤</span> 관객이 영화 속 인물에 공감하는 심리 기제</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-1"></div>
+<button class="reset-btn" onclick="resetQuiz(5,1)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q2 빈칸추론 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">빈칸추론</span>2. 다음 빈칸에 들어갈 말로 가장 적절한 것은?</div>
+<div class="quiz-passage">As the set of cultural norms and categories taken for granted at any particular time, the present is normally more or less ____________ to those who participate in it. It is the unthought background of their thought and action, like water to a fish, or air to a dove.</div>
+<ul class="quiz-opts" id="q5-2">
+<li onclick="check(5,2,1,false)"><span class="opt-num">①</span> visible</li>
+<li onclick="check(5,2,2,true)"><span class="opt-num">②</span> invisible</li>
+<li onclick="check(5,2,3,false)"><span class="opt-num">③</span> attractive</li>
+<li onclick="check(5,2,4,false)"><span class="opt-num">④</span> meaningful</li>
+<li onclick="check(5,2,5,false)"><span class="opt-num">⑤</span> dangerous</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-2"></div>
+<button class="reset-btn" onclick="resetQuiz(5,2)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q3 어법 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">어법</span>3. 다음 중 어법상 어색한 것은?</div>
+<div class="quiz-passage">As the set of cultural norms and categories ①taken for granted at any particular time, the present is normally more or less invisible to those ②who participate in it. … In the culturally dated film, attitudes and ways of behaving that have altered over time and ③which now appear as quaint, strange, 'incorrect' or problematic, are taken for granted by the characters in the film. … The present is also visible in contemporary historical dramas ④that reads the past in terms of the present, anachronistically importing modern attitudes into the past ⑤they portray.</div>
+<ul class="quiz-opts" id="q5-3">
+<li onclick="check(5,3,1,false)"><span class="opt-num">①</span> taken</li>
+<li onclick="check(5,3,2,false)"><span class="opt-num">②</span> who</li>
+<li onclick="check(5,3,3,false)"><span class="opt-num">③</span> which</li>
+<li onclick="check(5,3,4,true)"><span class="opt-num">④</span> reads → read (선행사 dramas 복수 일치)</li>
+<li onclick="check(5,3,5,false)"><span class="opt-num">⑤</span> they portray</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-3"></div>
+<button class="reset-btn" onclick="resetQuiz(5,3)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q4 내용불일치 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">내용불일치</span>4. 윗글의 내용과 일치하지 <u>않는</u> 것은?</div>
+<ul class="quiz-opts" id="q5-4">
+<li onclick="check(5,4,1,false)"><span class="opt-num">①</span> 현재는 그 안에서 살아가는 사람들에게는 거의 보이지 않는다.</li>
+<li onclick="check(5,4,2,false)"><span class="opt-num">②</span> 현재는 마치 물고기에게 물처럼 의식되지 않는 배경이다.</li>
+<li onclick="check(5,4,3,false)"><span class="opt-num">③</span> 시대에 뒤진 영화에서는 등장인물이 지금 보기에 이상한 태도를 당연시한다.</li>
+<li onclick="check(5,4,4,true)"><span class="opt-num">④</span> 현대 역사 드라마는 시대착오를 철저히 피하여 과거를 객관적으로 그려낸다.</li>
+<li onclick="check(5,4,5,false)"><span class="opt-num">⑤</span> 시대에 뒤진 역사 영화 속 시대착오는 그 자체로 지나간 현재를 반영한다.</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-4"></div>
+<button class="reset-btn" onclick="resetQuiz(5,4)">↺ 다시 풀기</button>
+</div>
+
+<!-- Q5 글의순서 -->
+<div class="quiz-block">
+<div class="quiz-q"><span class="qtype">글의순서</span>5. 주어진 글 다음에 이어질 글의 순서로 가장 적절한 것은?</div>
+<div class="quiz-passage">
+<strong>[주어진 글]</strong> As the set of cultural norms and categories taken for granted at any particular time, the present is normally more or less invisible to those who participate in it.<br><br>
+<strong>(A)</strong> In the culturally dated film, attitudes and ways of behaving that have altered over time and which now appear as quaint, strange, 'incorrect' or problematic, are taken for granted by the characters in the film, and go unquestioned or are even happily endorsed in the film's narrative.<br>
+<strong>(B)</strong> It is the unthought background of their thought and action, like water to a fish, or air to a dove. In films, this background can sometimes become visible as a bygone present in a film that is not just historically but culturally dated.<br>
+<strong>(C)</strong> The present is also visible in contemporary historical dramas that 'read the past in terms of the present'. This is doubly evident in dated historical films, where the anachronisms are themselves reflective of a bygone present.
+</div>
+<ul class="quiz-opts" id="q5-5">
+<li onclick="check(5,5,1,false)"><span class="opt-num">①</span> (A) - (B) - (C)</li>
+<li onclick="check(5,5,2,false)"><span class="opt-num">②</span> (A) - (C) - (B)</li>
+<li onclick="check(5,5,3,true)"><span class="opt-num">③</span> (B) - (A) - (C)</li>
+<li onclick="check(5,5,4,false)"><span class="opt-num">④</span> (B) - (C) - (A)</li>
+<li onclick="check(5,5,5,false)"><span class="opt-num">⑤</span> (C) - (B) - (A)</li>
+</ul>
+<div class="quiz-fb" id="fb-q5-5"></div>
+<button class="reset-btn" onclick="resetQuiz(5,5)">↺ 다시 풀기</button>
+</div>
+
+<!-- 서술형 1 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 1] 다음은 윗글의 핵심을 요약한 문장이다. 빈칸 (A), (B)에 들어갈 단어를 본문에서 찾아 쓰시오.</div>
+<div class="essay-cond">조건: 본문의 단어를 그대로 활용 · 각 한 단어</div>
+<div class="quiz-passage">The cultural norms of any particular present are <strong>(A) __________</strong> to those living in it, just as water is to a fish; however, in culturally dated films these norms become visible as a bygone present, and historical dramas reveal their own present through their <strong>(B) __________</strong>.</div>
+<textarea class="essay-area" placeholder="(A): &#10;(B): "></textarea>
+<button class="essay-toggle" onclick="toggleAns(5,1)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans5-1">
+<strong>(A)</strong> invisible &nbsp;|&nbsp; <strong>(B)</strong> anachronisms<br>
+<strong>해설:</strong> 본문 ①번 문장의 "the present is normally more or less <em>invisible</em>"과 ⑥번 문장의 "the <em>anachronisms</em> are themselves reflective of a bygone present"에서 핵심 단어를 추출한다.
+</div>
+</div>
+
+<!-- 서술형 2 -->
+<div class="essay-block">
+<div class="essay-q">[서술형 2] 시대에 뒤진 역사 영화에서 시대착오(anachronism)가 왜 '두 배로 명백(doubly evident)'한지를 본문 근거를 들어 영어 완전한 문장으로 서술하시오.</div>
+<div class="essay-cond">조건: 완전한 영어 문장 · 35 단어 내외 · "past"와 "present" 두 단어 포함</div>
+<textarea class="essay-area" placeholder="여기에 답안을 작성하세요..."></textarea>
+<button class="essay-toggle" onclick="toggleAns(5,2)">모범답안 보기 ▼</button>
+<div class="essay-ans" id="ans5-2">
+<strong>모범답안:</strong> Because these films not only fail to portray the past accurately but also import the attitudes of the filmmakers' own present into it, so the anachronisms themselves end up reflecting that bygone present as well.<br><br>
+<strong>해설:</strong> 본문 ⑤·⑥번 문장의 핵심 — (1) 역사 영화의 시대착오 + (2) 그 영화 제작 시기의 현재를 무의식적으로 반영 — 이 이중으로 겹쳐 명백해진다는 논리를 살린 답안.
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<!-- ============ 지문 5 끝 ============ -->
+
+
+</main>
+
+<script>
+function showPassage(n) {
+  var items = document.querySelectorAll('.passage-list li');
+  for (var i=0; i<items.length; i++) { items[i].classList.remove('active'); }
+  items[n-1].classList.add('active');
+
+  var blocks = document.querySelectorAll('.passage-block');
+  for (var j=0; j<blocks.length; j++) { blocks[j].classList.remove('active'); }
+  document.getElementById('p'+n).classList.add('active');
+
+  showTab(n, 'full');
+  window.scrollTo(0,0);
+}
+
+function showTab(n, tab) {
+  var block = document.getElementById('p'+n);
+  if (!block) return;
+
+  var btns = block.querySelectorAll('.tab');
+  for (var i=0; i<btns.length; i++) { btns[i].classList.remove('active'); }
+  var idxMap = {'full':0, 'analysis':1, 'words':2, 'trans':3, 'theme':4, 'bg':5, 'quiz':6};
+  if (btns[idxMap[tab]]) btns[idxMap[tab]].classList.add('active');
+
+  var contents = block.querySelectorAll('.tab-content');
+  for (var j=0; j<contents.length; j++) { contents[j].classList.remove('active'); }
+  var target = document.getElementById('p'+n+'-'+tab);
+  if (target) target.classList.add('active');
+}
+
+function check(n, q, opt, isCorrect) {
+  var ul = document.getElementById('q'+n+'-'+q);
+  var fb = document.getElementById('fb-q'+n+'-'+q);
+  if (!ul || !fb) return;
+
+  var items = ul.querySelectorAll('li');
+  for (var i=0; i<items.length; i++) {
+    if (items[i].classList.contains('correct')) return;
+  }
+
+  var clicked = items[opt-1];
+  if (isCorrect) {
+    clicked.classList.add('correct');
+    fb.className = 'quiz-fb show ok';
+    fb.innerHTML = '\u2713 \uc815\ub2f5\uc785\ub2c8\ub2e4!';
+  } else {
+    clicked.classList.add('wrong');
+    fb.className = 'quiz-fb show ng';
+    var correctIdx = -1;
+    var attrs = ul.querySelectorAll('li');
+    for (var k=0; k<attrs.length; k++) {
+      var oc = attrs[k].getAttribute('onclick') || '';
+      if (oc.indexOf(',true)') !== -1) { correctIdx = k; break; }
+    }
+    if (correctIdx >= 0) {
+      attrs[correctIdx].classList.add('correct');
+      fb.innerHTML = '\u2717 \uc624\ub2f5\uc785\ub2c8\ub2e4. \uc815\ub2f5\uc740 \u00ab' + (correctIdx+1) + '\u00bb \ubc88\uc785\ub2c8\ub2e4.';
+    } else {
+      fb.innerHTML = '\u2717 \uc624\ub2f5\uc785\ub2c8\ub2e4.';
+    }
+  }
+}
+
+function resetQuiz(n, q) {
+  var ul = document.getElementById('q'+n+'-'+q);
+  var fb = document.getElementById('fb-q'+n+'-'+q);
+  if (!ul || !fb) return;
+  var items = ul.querySelectorAll('li');
+  for (var i=0; i<items.length; i++) {
+    items[i].classList.remove('correct');
+    items[i].classList.remove('wrong');
+  }
+  fb.className = 'quiz-fb';
+  fb.innerHTML = '';
+}
+
+function toggleAns(n, e) {
+  var ans = document.getElementById('ans'+n+'-'+e);
+  if (!ans) return;
+  ans.classList.toggle('show');
+}
+</script>
+
+</body>
+</html>
+
